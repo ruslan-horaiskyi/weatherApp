@@ -1,0 +1,7 @@
+.conteiner {
+  width: 100%;
+  height: fit-content;
+  border: 1px solid grey;
+  display: flex;
+  padding: 0.5rem;
+}

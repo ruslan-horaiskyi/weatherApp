@@ -1,0 +1,58 @@
+[
+  {
+    "day": "Sunday",
+    "date": 15,
+    "month": "May",
+    "imageUrl": "../Images/rain.png",
+    "minTemp": "+9°",
+    "maxTemp": "+20°"
+  },
+  {
+    "day": "Monday",
+    "date": 16,
+    "month": "May",
+    "imageUrl": "../Images/rain.png",
+    "minTemp": "+10°",
+    "maxTemp": "+21°"
+  },
+  {
+    "day": "Tuesday",
+    "date": 17,
+    "month": "May",
+    "imageUrl": "../Images/rain.png",
+    "minTemp": "+7°",
+    "maxTemp": "+16°"
+  },
+  {
+    "day": "Wednesday",
+    "date": 18,
+    "month": "May",
+    "imageUrl": "../Images/rain.png",
+    "minTemp": "+6°",
+    "maxTemp": "+11°"
+  },
+  {
+    "day": "Thursday",
+    "date": 19,
+    "month": "May",
+    "imageUrl": "../Images/rain.png",
+    "minTemp": "+19°",
+    "maxTemp": "+25°"
+  },
+  {
+    "day": "Friday",
+    "date": 20,
+    "month": "May",
+    "imageUrl": "../Images/rain.png",
+    "minTemp": "+17°",
+    "maxTemp": "+24°"
+  },
+  {
+    "day": "Saturday",
+    "date": 21,
+    "month": "May",
+    "imageUrl": "../Images/rain.png",
+    "minTemp": "+25°",
+    "maxTemp": "+31°"
+  }
+]
