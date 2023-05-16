@@ -1,0 +1,23 @@
+/* .custom-h1 {
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+} */
+
+.water_div {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: .5rem;
+}
+
+.input_div {
+  display: flex;
+  justify-content: space-between;
+}
+
+input {
+  padding: 5px;
+  border-radius: 7px;
+  box-shadow: 1px;
+}

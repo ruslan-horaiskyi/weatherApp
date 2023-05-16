@@ -1,0 +1,10 @@
+/* .custom-h1 {
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+} */
+
+.water_div {
+  display: flex;
+  flex-direction: column;
+}
