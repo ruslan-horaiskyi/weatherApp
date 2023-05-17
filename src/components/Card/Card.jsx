@@ -1,18 +1,35 @@
+import { useState } from 'react'
 import './Card.css'
 import weather from '../Data/data.json'
-// import PropTypes from 'prop-types'
 
 const Card = () => {
   console.log('card')
+  const [focusedCard, setFocusedCard] = useState(null)
+
+  const handleCardFocus = (date) => {
+    setFocusedCard(date)
+  }
+
+  const handleCardBlur = () => {
+    setFocusedCard(null)
+  }
+
   return (
     weather &&
-    weather.map(({ day, date, month, imageUrl, minTemp, maxTemp }) => (
-      <div className='card' key={date}>
+    weather.map(({ day, date, month, cardImageUrl, minTemp, maxTemp }) => (
+      <div
+        className={`card ${focusedCard === date ? 'focused' : ''}`}
+        key={date}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
+        onFocus={() => handleCardFocus(date)}
+        onBlur={handleCardBlur}
+      >
         <p>{day}</p>
         <p>{date}</p>
         <p>{month}</p>
         <div>
-          <img src={imageUrl} alt='rain' />
+          <img src={cardImageUrl} alt='rain' />
         </div>
         <div className='temperature'>
           <div>
@@ -26,8 +43,5 @@ const Card = () => {
     ))
   )
 }
-// Card.propTypes = {}
-
-// Card.defaultProps = {}
 
 export default Card
