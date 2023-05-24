@@ -2,15 +2,17 @@ import { useState } from 'react'
 import './Card.css'
 import weather from '../Data/data.json'
 
-const Card = () => {
+const Card = ({ handleCardFocus, handleCardBlur }) => {
   console.log('card')
   const [focusedCard, setFocusedCard] = useState(null)
 
-  const handleCardFocus = (date) => {
+  const handleFocus = (date) => {
+    handleCardFocus(date)
     setFocusedCard(date)
   }
 
-  const handleCardBlur = () => {
+  const handleBlur = () => {
+    handleCardBlur()
     setFocusedCard(null)
   }
 
@@ -22,8 +24,8 @@ const Card = () => {
         key={date}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
-        onFocus={() => handleCardFocus(date)}
-        onBlur={handleCardBlur}
+        onFocus={() => handleFocus(date)}
+        onBlur={handleBlur}
       >
         <p>{day}</p>
         <p>{date}</p>
