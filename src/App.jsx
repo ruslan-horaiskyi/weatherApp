@@ -12,16 +12,9 @@ const App = () => {
     setFocusedCard(date)
   }
 
-  const handleCardBlur = () => {
-    setFocusedCard(null)
-  }
-
   return (
     <Conteiner>
-      <CardContainer
-        handleCardFocus={handleCardFocus}
-        handleCardBlur={handleCardBlur}
-      />
+      <CardContainer handleCardFocus={handleCardFocus} />
       {focusedCard && <MoreInfo date={focusedCard} />}
     </Conteiner>
   )
