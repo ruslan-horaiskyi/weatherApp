@@ -1,13 +1,14 @@
-import PropTypes from 'prop-types'
-import './MoreInfo.css'
-import weather from '../Data/data.json'
+import PropTypes from 'prop-types';
+// import weatherData from '../../constants/data.json';
 
-const MoreInfo = ({ date }) => {
-  console.log('MoreInfo')
-  const selectedCard = weather.find((item) => item.date === date)
+import './MoreInfo.css';
 
-  if (!selectedCard) {
-    return null
+const MoreInfo = ({ data }) => {
+  console.log('MoreInfo');
+  // const selectedCard = weatherData.find((item) => item.date === date);
+
+  if (!data) {
+    return null;
   }
 
   const {
@@ -20,7 +21,7 @@ const MoreInfo = ({ date }) => {
     humidity,
     wind,
     precipitation,
-  } = selectedCard
+  } = data;
 
   return (
     <div className='moreInfo'>
@@ -41,11 +42,21 @@ const MoreInfo = ({ date }) => {
         <p>Ймовірність опадів, %: {precipitation}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 MoreInfo.propTypes = {
-  date: PropTypes.string.isRequired,
-}
+  data: PropTypes.shape({
+    moreInfoImageUrl: PropTypes.string.isRequired,
+    sunrise: PropTypes.string.isRequired,
+    sunset: PropTypes.string.isRequired,
+    currentTemp: PropTypes.string.isRequired,
+    feelsLikeTemp: PropTypes.string.isRequired,
+    pressure: PropTypes.string.isRequired,
+    humidity: PropTypes.string.isRequired,
+    wind: PropTypes.string.isRequired,
+    precipitation: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
-export default MoreInfo
+export default MoreInfo;
