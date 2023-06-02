@@ -19,9 +19,12 @@ const CardList = ({ focusedCard, handleCardFocus, onClose }) => (
           />
         ))
       )}
-      <button type='button' className='closeButton' onClick={onClose}>
-        X
-      </button>
+
+      {focusedCard && (
+        <button type='button' className='closeButton' onClick={onClose}>
+          X
+        </button>
+      )}
     </div>
     {focusedCard && (
       <div className='moreInfoContainer'>
