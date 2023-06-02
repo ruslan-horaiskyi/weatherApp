@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-
 import './MoreInfo.css';
 
-const MoreInfo = ({ data }) => {
+const MoreInfo = ({ data, onClose }) => {
   console.log('MoreInfo');
 
   if (!data) {
@@ -39,6 +38,9 @@ const MoreInfo = ({ data }) => {
         <p>Вітер, м/сек: {wind}</p>
         <p>Ймовірність опадів, %: {precipitation}</p>
       </div>
+      <button className='closeButton' onClick={onClose} type='button'>
+        X
+      </button>
     </div>
   );
 };
@@ -55,6 +57,7 @@ MoreInfo.propTypes = {
     wind: PropTypes.string.isRequired,
     precipitation: PropTypes.string.isRequired,
   }).isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default MoreInfo;

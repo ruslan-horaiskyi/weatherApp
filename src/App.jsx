@@ -7,8 +7,8 @@ import CardList from './components/CardList/CardList';
 import './App.css';
 
 const App = () => {
-  const [focusedCard, setFocusedCard] = useState(null);
   console.log('App');
+  const [focusedCard, setFocusedCard] = useState(null);
 
   const handleCardFocus = useCallback(
     (date) => {
@@ -17,12 +17,18 @@ const App = () => {
     [setFocusedCard]
   );
 
+  const handleCloseMoreInfo = useCallback(() => {
+    setFocusedCard(null);
+  }, [setFocusedCard]);
+
   return (
     <>
       <div className='container'>
         <CardList handleCardFocus={handleCardFocus} focusedCard={focusedCard} />
       </div>
-      {focusedCard && <MoreInfo data={focusedCard} />}
+      {focusedCard && (
+        <MoreInfo data={focusedCard} onClose={handleCloseMoreInfo} />
+      )}
     </>
   );
 };

@@ -12,3 +12,17 @@
 .infoDaylight {
   border: 0.5px solid rgb(128, 128, 128, 45%);
 }
+
+.closeButton {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(174, 217, 251);
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: rgb(15, 69, 110);
+  color: rgb(255, 255, 255);
+}
