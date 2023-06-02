@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
-// import weatherData from '../../constants/data.json';
 
 import './MoreInfo.css';
 
 const MoreInfo = ({ data }) => {
   console.log('MoreInfo');
-  // const selectedCard = weatherData.find((item) => item.date === date);
 
   if (!data) {
     return null;
