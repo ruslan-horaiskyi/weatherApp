@@ -7,9 +7,13 @@ import styles from './Card.module.css';
 
 const Card = memo(({ data, isActive, handleClick }) => {
   console.log('Card');
-  const clickHandler = useCallback(() => {
-    handleClick(data);
-  }, [handleClick, data]);
+  const clickHandler = useCallback(
+    (event) => {
+      event.stopPropagation();
+      handleClick(data);
+    },
+    [handleClick, data]
+  );
 
   const { day, date, month, cardImageUrl, minTemp, maxTemp } = data;
 
