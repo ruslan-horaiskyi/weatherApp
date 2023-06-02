@@ -12,10 +12,11 @@ const MoreInfo = ({ data, onClose }) => {
         onClose();
       }
     };
-
+    console.log('Click');
     document.body.addEventListener('click', handleClickOutside);
 
     return () => {
+      console.log('Removing click listener');
       document.body.removeEventListener('click', handleClickOutside);
     };
   }, [onClose]);
