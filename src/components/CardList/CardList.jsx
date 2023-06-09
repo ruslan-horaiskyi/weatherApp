@@ -26,7 +26,7 @@ const CardList = ({ focusedCard, handleCardFocus, onClose }) => (
           X
         </button>
         <div className='moreInfoContainer'>
-          <MoreInfo data={focusedCard} />
+          <MoreInfo data={focusedCard} onClose={onClose} />
         </div>
       </>
     )}
