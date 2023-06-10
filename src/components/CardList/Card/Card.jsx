@@ -2,36 +2,24 @@ import { useCallback, memo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import RainImage from '../../../../public/Images/rain.png';
-import SunImage from '../../../../public/Images/sunny.png';
-import CloudImage from '../../../../public/Images/cloudy.png';
-import BrokenCloudImage from '../../../../public/Images/brokenClouds.png';
-import MistImage from '../../../../public/Images/mist.png';
-import SnowImage from '../../../../public/Images/snow.png';
-import ThunderstormImage from '../../../../public/Images/thunderstorm.png';
+import rainImage from '../../../constants/Img/rain.png';
+import sunnyImage from '../../../constants/Img/sunny.png';
+import cloudyImage from '../../../constants/Img/cloudy.png';
+import brokenCloudImage from '../../../constants/Img/brokenClouds.png';
+import mistImage from '../../../constants/Img/mist.png';
+import snowImage from '../../../constants/Img/snow.png';
+import thunderstormImage from '../../../constants/Img/thunderstorm.png';
 
 import styles from './Card.module.css';
 
-const getWeatherImage = (weatherStatus) => {
-  switch (weatherStatus) {
-    case 'Rain':
-      return RainImage;
-    case 'Sun':
-      return SunImage;
-    case 'Cloudy':
-      return CloudImage;
-    case 'BrokenCloud':
-      return BrokenCloudImage;
-    case 'Mist':
-      return MistImage;
-    case 'Snow':
-      return SnowImage;
-    case 'Thunderstorm':
-      return ThunderstormImage;
-
-    default:
-      return null;
-  }
+const weatherImageMap = {
+  Rain: rainImage,
+  Sun: sunnyImage,
+  Cloud: cloudyImage,
+  BrokenCloud: brokenCloudImage,
+  Mist: mistImage,
+  Snow: snowImage,
+  Thunderstorm: thunderstormImage,
 };
 
 const Card = memo(({ data, isActive, handleClick }) => {
@@ -45,7 +33,7 @@ const Card = memo(({ data, isActive, handleClick }) => {
 
   const { day, date, month, weatherStatus, minTemp, maxTemp } = data;
 
-  const cardImageUrl = getWeatherImage(weatherStatus);
+  const weatherImage = weatherImageMap[weatherStatus];
 
   return (
     <div
@@ -60,7 +48,7 @@ const Card = memo(({ data, isActive, handleClick }) => {
       <div className={styles.date}>{date}</div>
       <div className={styles.month}>{month}</div>
       <div className={styles.cardImage}>
-        <img src={cardImageUrl} alt={weatherStatus} />
+        <img src={weatherImage} alt={weatherStatus} />
       </div>
       <div className={styles.temperature}>
         <div>
