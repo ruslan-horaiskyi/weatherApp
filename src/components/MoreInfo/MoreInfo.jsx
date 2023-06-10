@@ -1,7 +1,26 @@
 import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
+
 import './MoreInfo.css';
 
 const MoreInfo = ({ data, onClose }) => {
+  const moreInfoRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (moreInfoRef.current && !moreInfoRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+    console.log('Click');
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => {
+      console.log('Removing click listener');
+      document.body.removeEventListener('click', handleClickOutside);
+    };
+  }, [onClose]);
+
   console.log('MoreInfo');
 
   if (!data) {
@@ -21,7 +40,7 @@ const MoreInfo = ({ data, onClose }) => {
   } = data;
 
   return (
-    <div className='moreInfo'>
+    <div className='moreInfo' ref={moreInfoRef}>
       <div>
         <p>Погода сьогодні</p>
         <img src={moreInfoImageUrl} alt='moreInfo' />

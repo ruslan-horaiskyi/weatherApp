@@ -2,6 +2,7 @@ html,
 body {
   overscroll-behavior-y: none;
   caret-color: transparent;
+  height: 100vw;
 }
 
 input::-webkit-outer-spin-button,
