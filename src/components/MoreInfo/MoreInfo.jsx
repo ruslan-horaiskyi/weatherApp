@@ -53,8 +53,14 @@ const MoreInfo = ({ data, onClose }) => {
         <p>Вітер, м/сек: {wind}</p>
         <p>Ймовірність опадів, %: {precipitation}</p>
       </div>
-      <button className={styles.closeButton} onClick={onClose} type='button'>
-        X
+      <button
+        className={styles.closeButton}
+        onClick={onClose}
+        type='button'
+        aria-label='Close'
+        title='Close'
+      >
+        &#10005;
       </button>
     </div>
   );

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import weatherData from '../../constants/data.json';
 import Card from './Card/Card';
 import MoreInfo from '../MoreInfo/MoreInfo';
+import SVGComponent from '../SVGComponent/SVGComponent';
 
 import styles from './CardList.module.css';
 
@@ -23,8 +24,14 @@ const CardList = ({ focusedCard, handleCardFocus, onClose }) => (
     </div>
     {focusedCard && (
       <>
-        <button type='button' className={styles.closeButton} onClick={onClose}>
-          X
+        <button
+          type='button'
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label='Close'
+          title='Close'
+        >
+          <SVGComponent />
         </button>
         <div className={styles.moreInfoContainer}>
           <MoreInfo data={focusedCard} onClose={onClose} />

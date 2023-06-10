@@ -24,9 +24,9 @@ const Card = memo(({ data, isActive, handleClick }) => {
       role='presentation'
       onClick={clickHandler}
     >
-      <div>{day}</div>
-      <div>{date}</div>
-      <div>{month}</div>
+      <div className={styles.day}>{day}</div>
+      <div className={styles.date}>{date}</div>
+      <div className={styles.month}>{month}</div>
       <div>
         <img src={cardImageUrl} alt='rain' />
       </div>

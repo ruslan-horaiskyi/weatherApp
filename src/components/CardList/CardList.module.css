@@ -8,22 +8,30 @@
 }
 
 .closeButton {
-  box-shadow: 1px 1px 1px 1px rgb(0, 0, 0, 0.25);
-  border-radius: 10px;
-  height: 150px;
-  width: 110px;
-  text-align: center;
-  font-size: 18px;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 10px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+  height: 32px;
+  width: 32px;
   cursor: pointer;
   border: none;
+  margin-top: 5px;
   margin-left: 5px;
 }
 
 .closeButton:hover {
-  background-color: rgba(163, 213, 248);
-  color: rgb(255, 255, 255);
+  background-color: rgba(203, 240, 253, 0.7);
 }
 
-/* .cardListContainer {
-
-} */
+.cardListContainer {
+  margin-top: 15px;
+  display: flex;
+  max-width: 900px;
+  min-width: 900px;
+  flex-wrap: wrap;
+}
