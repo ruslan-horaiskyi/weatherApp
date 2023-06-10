@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import weatherData from '../../constants/data.json';
 import Card from './Card/Card';
 import MoreInfo from '../MoreInfo/MoreInfo';
-import './CardList.css';
+
+import styles from './CardList.module.css';
 
 const CardList = ({ focusedCard, handleCardFocus, onClose }) => (
-  <div className='cardListContainer'>
-    <div className='cardList'>
+  <div className={styles.cardListContainer}>
+    <div className={styles.cardList}>
       {!weatherData ? (
         <div>No weather data</div>
       ) : (
@@ -22,10 +23,10 @@ const CardList = ({ focusedCard, handleCardFocus, onClose }) => (
     </div>
     {focusedCard && (
       <>
-        <button type='button' className='closeButton' onClick={onClose}>
+        <button type='button' className={styles.closeButton} onClick={onClose}>
           X
         </button>
-        <div className='moreInfoContainer'>
+        <div className={styles.moreInfoContainer}>
           <MoreInfo data={focusedCard} onClose={onClose} />
         </div>
       </>

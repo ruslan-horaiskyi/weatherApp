@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 
-import './MoreInfo.css';
+import styles from './MoreInfo.module.css';
 
 const MoreInfo = ({ data, onClose }) => {
   const moreInfoRef = useRef(null);
@@ -12,16 +12,12 @@ const MoreInfo = ({ data, onClose }) => {
         onClose();
       }
     };
-    console.log('Click');
     document.body.addEventListener('click', handleClickOutside);
 
     return () => {
-      console.log('Removing click listener');
       document.body.removeEventListener('click', handleClickOutside);
     };
   }, [onClose]);
-
-  console.log('MoreInfo');
 
   if (!data) {
     return null;
@@ -40,16 +36,16 @@ const MoreInfo = ({ data, onClose }) => {
   } = data;
 
   return (
-    <div className='moreInfo' ref={moreInfoRef}>
+    <div className={styles.moreInfo} ref={moreInfoRef}>
       <div>
         <p>Погода сьогодні</p>
         <img src={moreInfoImageUrl} alt='moreInfo' />
-        <div className='infoDaylight'>
+        <div className={styles.infoDaylight}>
           Схід <span>{sunrise}</span> Захід <span>{sunset}</span>
         </div>
       </div>
 
-      <div className='titles'>
+      <div className={styles.titles}>
         <p>Температура, °C: {currentTemp}</p>
         <p>Відчувається як: {feelsLikeTemp}</p>
         <p>Тиск, мм: {pressure}</p>
@@ -57,7 +53,7 @@ const MoreInfo = ({ data, onClose }) => {
         <p>Вітер, м/сек: {wind}</p>
         <p>Ймовірність опадів, %: {precipitation}</p>
       </div>
-      <button className='closeButton' onClick={onClose} type='button'>
+      <button className={styles.closeButton} onClick={onClose} type='button'>
         X
       </button>
     </div>

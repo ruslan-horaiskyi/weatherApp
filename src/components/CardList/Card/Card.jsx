@@ -2,11 +2,9 @@ import { useCallback, memo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-// import './Card.css';
 import styles from './Card.module.css';
 
 const Card = memo(({ data, isActive, handleClick }) => {
-  console.log('Card');
   const clickHandler = useCallback(
     (event) => {
       event.stopPropagation();
