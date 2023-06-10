@@ -39,7 +39,9 @@ const MoreInfo = ({ data, onClose }) => {
     <div className={styles.moreInfo} ref={moreInfoRef}>
       <div>
         <p>Погода сьогодні</p>
-        <img src={moreInfoImageUrl} alt='moreInfo' />
+        <div className={styles.moreInfoImage}>
+          <img src={moreInfoImageUrl} alt='moreInfo' />
+        </div>
         <div className={styles.infoDaylight}>
           Схід <span>{sunrise}</span> Захід <span>{sunset}</span>
         </div>

@@ -9,6 +9,14 @@
   border-radius: 10px;
 }
 
+.moreInfoImage {
+  width: 188px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .infoDaylight {
   border: 0.5px solid rgb(128, 128, 128, 45%);
 }
