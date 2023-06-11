@@ -1,21 +1,12 @@
-import { useCallback, useEffect, useState, memo } from 'react';
+import { useCallback, memo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+
+import CustomIcon from '../../CustomIcon/CustomIcon';
+
 import styles from './Card.module.css';
 
-const weatherImageMap = {
-  Rain: 'rain.png',
-  Sun: 'sunny.png',
-  Cloud: 'cloudy.png',
-  BrokenCloud: 'brokenClouds.png',
-  Mist: 'mist.png',
-  Snow: 'snow.png',
-  Thunderstorm: 'thunderstorm.png',
-};
-
 const Card = memo(({ data, isActive, handleClick }) => {
-  const [weatherImage, setWeatherImage] = useState(null);
-
   const clickHandler = useCallback(
     (event) => {
       event.stopPropagation();
@@ -25,17 +16,6 @@ const Card = memo(({ data, isActive, handleClick }) => {
   );
 
   const { day, date, month, weatherStatus, minTemp, maxTemp } = data;
-
-  useEffect(() => {
-    import(`../../../constants/Img/${weatherImageMap[weatherStatus]}`)
-      .then((imageModule) => {
-        const loadedImage = imageModule.default;
-        setWeatherImage(loadedImage);
-      })
-      .catch((error) => {
-        console.error('Failed to load weather image:', error);
-      });
-  }, [weatherStatus]);
 
   return (
     <div
@@ -50,7 +30,7 @@ const Card = memo(({ data, isActive, handleClick }) => {
       <div className={styles.date}>{date}</div>
       <div className={styles.month}>{month}</div>
       <div className={styles.cardImage}>
-        {weatherImage && <img src={weatherImage} alt={weatherStatus} />}
+        <CustomIcon weatherStatus={weatherStatus} />
       </div>
       <div className={styles.temperature}>
         <div>

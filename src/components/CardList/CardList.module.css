@@ -8,28 +8,25 @@
 }
 
 .closeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: none;
   color: inherit;
   border: none;
-  padding: 10px;
   font: inherit;
   cursor: pointer;
   outline: inherit;
-
-  height: 32px;
-  width: 32px;
+  height: fit-content;
   cursor: pointer;
   border: none;
-  margin-top: 5px;
-  margin-left: 5px;
 }
 
-.closeButton:hover {
+/* .closeButton:hover {
   background-color: rgba(203, 240, 253, 0.7);
-}
+} */
 
 .cardListContainer {
-  margin-top: 15px;
   display: flex;
   max-width: 900px;
   min-width: 900px;

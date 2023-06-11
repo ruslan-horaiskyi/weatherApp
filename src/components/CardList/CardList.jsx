@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import weatherData from '../../constants/data.json';
 import Card from './Card/Card';
 import MoreInfo from '../MoreInfo/MoreInfo';
-import SVGComponent from '../SVGComponent/SVGComponent';
+import { ReactComponent as SVGIcon } from '../../constants/Img/svg.svg';
 
 import styles from './CardList.module.css';
 
@@ -31,10 +31,15 @@ const CardList = ({ focusedCard, handleCardFocus, onClose }) => (
           aria-label='Close'
           title='Close'
         >
-          <SVGComponent />
+          <SVGIcon />
         </button>
         <div className={styles.moreInfoContainer}>
-          <MoreInfo data={focusedCard} onClose={onClose} />
+          <MoreInfo
+            data={
+              weatherData.filter(({ date }) => focusedCard?.date === date)[0]
+            }
+            onClose={onClose}
+          />
         </div>
       </>
     )}

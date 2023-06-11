@@ -1,25 +1,9 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 
-import rainImage from '../../constants/Img/rain.png';
-import sunnyImage from '../../constants/Img/sunny.png';
-import cloudyImage from '../../constants/Img/cloudy.png';
-import brokenCloudImage from '../../constants/Img/brokenClouds.png';
-import mistImage from '../../constants/Img/mist.png';
-import snowImage from '../../constants/Img/snow.png';
-import thunderstormImage from '../../constants/Img/thunderstorm.png';
+import CustomIcon from '../CustomIcon/CustomIcon';
 
 import styles from './MoreInfo.module.css';
-
-const moreInfoImageMap = {
-  Rain: rainImage,
-  Sun: sunnyImage,
-  Cloud: cloudyImage,
-  BrokenCloud: brokenCloudImage,
-  Mist: mistImage,
-  Snow: snowImage,
-  Thunderstorm: thunderstormImage,
-};
 
 const MoreInfo = ({ data, onClose }) => {
   const moreInfoRef = useRef(null);
@@ -37,12 +21,20 @@ const MoreInfo = ({ data, onClose }) => {
     };
   }, [onClose]);
 
-  if (!data) {
-    return null;
-  }
+  const { weatherStatus } = data;
+
+  /* useEffect(() => {
+    import(`../../constants/Img/${moreInfoImageMap[weatherStatus]}`)
+      .then((imageModule) => {
+        const loadedImage = imageModule.default;
+        setMoreInfoImage(loadedImage);
+      })
+      .catch((error) => {
+        console.error('Failed to load weather image:', error);
+      });
+  }, [weatherStatus]); */
 
   const {
-    weatherStatus,
     sunrise,
     sunset,
     currentTemp,
@@ -53,14 +45,13 @@ const MoreInfo = ({ data, onClose }) => {
     precipitation,
   } = data;
 
-  const moreInfoImage = moreInfoImageMap[weatherStatus];
-
   return (
     <div className={styles.moreInfo} ref={moreInfoRef}>
       <div>
         <p>Погода сьогодні</p>
         <div className={styles.moreInfoImage}>
-          <img src={moreInfoImage} alt='moreInfo' />
+          <CustomIcon weatherStatus={weatherStatus} />
+          {/* {moreInfoImage && <img src={moreInfoImage} alt={weatherStatus} />} */}
         </div>
         <div className={styles.infoDaylight}>
           <span> Схід {sunrise}</span> <span> Захід {sunset}</span>
