@@ -1,7 +1,25 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 
+import rainImage from '../../constants/Img/rain.png';
+import sunnyImage from '../../constants/Img/sunny.png';
+import cloudyImage from '../../constants/Img/cloudy.png';
+import brokenCloudImage from '../../constants/Img/brokenClouds.png';
+import mistImage from '../../constants/Img/mist.png';
+import snowImage from '../../constants/Img/snow.png';
+import thunderstormImage from '../../constants/Img/thunderstorm.png';
+
 import styles from './MoreInfo.module.css';
+
+const moreInfoImageMap = {
+  Rain: rainImage,
+  Sun: sunnyImage,
+  Cloud: cloudyImage,
+  BrokenCloud: brokenCloudImage,
+  Mist: mistImage,
+  Snow: snowImage,
+  Thunderstorm: thunderstormImage,
+};
 
 const MoreInfo = ({ data, onClose }) => {
   const moreInfoRef = useRef(null);
@@ -24,7 +42,7 @@ const MoreInfo = ({ data, onClose }) => {
   }
 
   const {
-    moreInfoImageUrl,
+    weatherStatus,
     sunrise,
     sunset,
     currentTemp,
@@ -35,15 +53,17 @@ const MoreInfo = ({ data, onClose }) => {
     precipitation,
   } = data;
 
+  const moreInfoImage = moreInfoImageMap[weatherStatus];
+
   return (
     <div className={styles.moreInfo} ref={moreInfoRef}>
       <div>
         <p>Погода сьогодні</p>
         <div className={styles.moreInfoImage}>
-          <img src={moreInfoImageUrl} alt='moreInfo' />
+          <img src={moreInfoImage} alt='moreInfo' />
         </div>
         <div className={styles.infoDaylight}>
-          Схід <span>{sunrise}</span> Захід <span>{sunset}</span>
+          <span> Схід {sunrise}</span> <span> Захід {sunset}</span>
         </div>
       </div>
 
@@ -70,7 +90,7 @@ const MoreInfo = ({ data, onClose }) => {
 
 MoreInfo.propTypes = {
   data: PropTypes.shape({
-    moreInfoImageUrl: PropTypes.string.isRequired,
+    weatherStatus: PropTypes.string.isRequired,
     sunrise: PropTypes.string.isRequired,
     sunset: PropTypes.string.isRequired,
     currentTemp: PropTypes.string.isRequired,
