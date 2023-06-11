@@ -1,28 +1,21 @@
-import { useCallback, memo } from 'react';
+import { useCallback, useEffect, useState, memo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
-import rainImage from '../../../constants/Img/rain.png';
-import sunnyImage from '../../../constants/Img/sunny.png';
-import cloudyImage from '../../../constants/Img/cloudy.png';
-import brokenCloudImage from '../../../constants/Img/brokenClouds.png';
-import mistImage from '../../../constants/Img/mist.png';
-import snowImage from '../../../constants/Img/snow.png';
-import thunderstormImage from '../../../constants/Img/thunderstorm.png';
-
 import styles from './Card.module.css';
 
 const weatherImageMap = {
-  Rain: rainImage,
-  Sun: sunnyImage,
-  Cloud: cloudyImage,
-  BrokenCloud: brokenCloudImage,
-  Mist: mistImage,
-  Snow: snowImage,
-  Thunderstorm: thunderstormImage,
+  Rain: 'rain.png',
+  Sun: 'sunny.png',
+  Cloud: 'cloudy.png',
+  BrokenCloud: 'brokenClouds.png',
+  Mist: 'mist.png',
+  Snow: 'snow.png',
+  Thunderstorm: 'thunderstorm.png',
 };
 
 const Card = memo(({ data, isActive, handleClick }) => {
+  const [weatherImage, setWeatherImage] = useState(null);
+
   const clickHandler = useCallback(
     (event) => {
       event.stopPropagation();
@@ -33,7 +26,16 @@ const Card = memo(({ data, isActive, handleClick }) => {
 
   const { day, date, month, weatherStatus, minTemp, maxTemp } = data;
 
-  const weatherImage = weatherImageMap[weatherStatus];
+  useEffect(() => {
+    import(`../../../constants/Img/${weatherImageMap[weatherStatus]}`)
+      .then((imageModule) => {
+        const loadedImage = imageModule.default;
+        setWeatherImage(loadedImage);
+      })
+      .catch((error) => {
+        console.error('Failed to load weather image:', error);
+      });
+  }, [weatherStatus]);
 
   return (
     <div
@@ -48,7 +50,7 @@ const Card = memo(({ data, isActive, handleClick }) => {
       <div className={styles.date}>{date}</div>
       <div className={styles.month}>{month}</div>
       <div className={styles.cardImage}>
-        <img src={weatherImage} alt={weatherStatus} />
+        {weatherImage && <img src={weatherImage} alt={weatherStatus} />}
       </div>
       <div className={styles.temperature}>
         <div>
