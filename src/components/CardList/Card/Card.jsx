@@ -15,29 +15,32 @@ const Card = memo(({ data, isActive, handleClick }) => {
     [handleClick, data]
   );
 
-  const { day, date, month, weatherStatus, minTemp, maxTemp } = data;
+  const { currentDay, weather, main } = data;
+  const date = new Date(currentDay);
+  const month = date.toLocaleString('en-US', { month: 'long' });
+  const day = date.getDate();
+  const weekday = date.toLocaleString('en-US', { weekday: 'long' });
 
   return (
     <div
-      key={date}
       className={classNames(styles.card, {
         [styles.focused]: isActive,
       })}
       role='presentation'
       onClick={clickHandler}
     >
+      <div className={styles.weekday}>{weekday}</div>
       <div className={styles.day}>{day}</div>
-      <div className={styles.date}>{date}</div>
       <div className={styles.month}>{month}</div>
       <div className={styles.cardImage}>
-        <CustomIcon weatherStatus={weatherStatus} />
+        <CustomIcon weatherStatus={weather[0].main} />
       </div>
       <div className={styles.temperature}>
         <div>
-          min. <span>{minTemp}</span>
+          min. <span>{Math.round(main.temp_min)} &#8451;</span>
         </div>
         <div>
-          max. <span>{maxTemp}</span>
+          max. <span>{Math.round(main.temp_max)} &#8451;</span>
         </div>
       </div>
     </div>
@@ -46,12 +49,16 @@ const Card = memo(({ data, isActive, handleClick }) => {
 
 Card.propTypes = {
   data: PropTypes.shape({
-    day: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    month: PropTypes.string.isRequired,
-    weatherStatus: PropTypes.string.isRequired,
-    minTemp: PropTypes.string.isRequired,
-    maxTemp: PropTypes.string.isRequired,
+    currentDay: PropTypes.string.isRequired,
+    weather: PropTypes.arrayOf(
+      PropTypes.shape({
+        main: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    main: PropTypes.shape({
+      temp_min: PropTypes.number.isRequired,
+      temp_max: PropTypes.number.isRequired,
+    }).isRequired,
   }).isRequired,
   isActive: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,

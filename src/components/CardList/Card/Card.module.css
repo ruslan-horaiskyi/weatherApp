@@ -13,14 +13,14 @@
   width: 100%;
 }
 
-.date {
+.day {
   margin-top: 5px;
   font-size: 24px;
   line-height: 24px;
   font-family: 'arial,helvetica,sans-serif';
 }
 
-.day,
+.weekday,
 .month {
   text-decoration: underline dotted;
 }

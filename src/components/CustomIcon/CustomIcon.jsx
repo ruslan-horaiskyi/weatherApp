@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 
 const moreInfoImageMap = {
-  Rain: 'rain.png',
-  Sun: 'sunny.png',
-  Cloud: 'cloudy.png',
+  Rain: 'Rain.png',
+  Clear: 'Clear.png',
+  Clouds: 'Clouds.png',
   BrokenCloud: 'brokenClouds.png',
-  Mist: 'mist.png',
-  Snow: 'snow.png',
-  Thunderstorm: 'thunderstorm.png',
+  Mist: 'Mist.png',
+  Snow: 'Snow.png',
+  Thunderstorm: 'Thunderstorm.png',
 };
 
+// TODO: fix
 // eslint-disable-next-line react/prop-types
 const CustomIcon = ({ weatherStatus }) => {
   const [imgSrc, setImgSrc] = useState(null);
@@ -24,7 +25,6 @@ const CustomIcon = ({ weatherStatus }) => {
         console.error('Failed to load weather image:', error);
       });
   }, [weatherStatus]);
-
   if (!imgSrc) {
     return null;
   }
