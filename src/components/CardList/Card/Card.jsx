@@ -2,8 +2,9 @@ import { useCallback, memo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import CustomIcon from '../../CustomIcon/CustomIcon';
+import { roundValue } from '../../../utils/utils';
 
+import CustomIcon from '../../CustomIcon/CustomIcon';
 import styles from './Card.module.css';
 
 const Card = memo(({ data, isActive, handleClick }) => {
@@ -15,11 +16,13 @@ const Card = memo(({ data, isActive, handleClick }) => {
     [handleClick, data]
   );
 
-  const { currentDay, weather, main } = data;
+  const { currentDay = '', weather = [], main = {} } = data ?? {};
   const date = new Date(currentDay);
   const month = date.toLocaleString('en-US', { month: 'long' });
   const day = date.getDate();
   const weekday = date.toLocaleString('en-US', { weekday: 'long' });
+
+  const celsiusIcon = '℃';
 
   return (
     <div
@@ -37,10 +40,10 @@ const Card = memo(({ data, isActive, handleClick }) => {
       </div>
       <div className={styles.temperature}>
         <div>
-          min. <span>{Math.round(main.temp_min)} &#8451;</span>
+          min. <span>{roundValue(main.temp_min, celsiusIcon)} </span>
         </div>
         <div>
-          max. <span>{Math.round(main.temp_max)} &#8451;</span>
+          max. <span>{roundValue(main.temp_max, celsiusIcon)} </span>
         </div>
       </div>
     </div>
