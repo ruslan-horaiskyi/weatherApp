@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-const moreInfoImageMap = {
-  Rain: 'Rain.png',
-  Clear: 'Clear.png',
-  Clouds: 'Clouds.png',
-  BrokenCloud: 'brokenClouds.png',
-  Mist: 'Mist.png',
-  Snow: 'Snow.png',
-  Thunderstorm: 'Thunderstorm.png',
+import defaultIcon from '../../constants/Img/default.svg';
+
+const imageMap = {
+  Rain: 'Rain.svg',
+  Clear: 'Clear.svg',
+  Clouds: 'Clouds.svg',
+  BrokenCloud: 'brokenClouds.svg',
+  Mist: 'Mist.svg',
+  Snow: 'Snow.svg',
+  Thunderstorm: 'Thunderstorm.svg',
 };
 
-// TODO: fix
-// eslint-disable-next-line react/prop-types
 const CustomIcon = ({ weatherStatus }) => {
   const [imgSrc, setImgSrc] = useState(null);
 
   useEffect(() => {
-    import(`../../constants/Img/${moreInfoImageMap[weatherStatus]}`)
+    import(`../../constants/Img/${imageMap[weatherStatus]}`)
       .then((imageModule) => {
         const loadedImage = imageModule.default;
         setImgSrc(loadedImage);
@@ -25,11 +26,16 @@ const CustomIcon = ({ weatherStatus }) => {
         console.error('Failed to load weather image:', error);
       });
   }, [weatherStatus]);
+
   if (!imgSrc) {
-    return null;
+    return <img src={defaultIcon} alt={imageMap[weatherStatus]} />;
   }
 
-  return <img src={imgSrc} alt='weatherIcon' />;
+  return <img src={imgSrc} alt={imageMap[weatherStatus]} />;
+};
+
+CustomIcon.propTypes = {
+  weatherStatus: PropTypes.oneOf(Object.keys(imageMap)).isRequired,
 };
 
 export default CustomIcon;

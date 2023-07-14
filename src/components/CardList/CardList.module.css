@@ -22,10 +22,6 @@
   border: none;
 }
 
-/* .closeButton:hover {
-  background-color: rgba(203, 240, 253, 0.7);
-} */
-
 .cardListContainer {
   display: flex;
   max-width: 900px;
