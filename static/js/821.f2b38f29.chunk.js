@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreactbasic=self.webpackChunkreactbasic||[]).push([[821],{821:function(e,c,a){e.exports=a.p+"static/media/Rain.2100e4c01edfe0942acb.svg"}}]);
