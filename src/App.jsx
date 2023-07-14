@@ -1,30 +1,23 @@
-import { useCallback, useState } from 'react';
+// import { useCallback, useState } from 'react';
 import 'modern-normalize';
-
-import MoreInfo from './components/MoreInfo/MoreInfo';
 import CardList from './components/CardList/CardList';
 
-import './App.css';
+import styles from './App.module.css';
 
-const App = () => {
-  const [focusedCard, setFocusedCard] = useState(null);
-  console.log('App');
+const App = () => (
+  // const [focusedCard, setFocusedCard] = useState(null);
 
-  const handleCardFocus = useCallback(
-    (date) => {
-      setFocusedCard(date);
-    },
-    [setFocusedCard]
-  );
+  // const handleCardFocus = useCallback((date) => {
+  //   setFocusedCard(date);
+  // }, []);
 
-  return (
-    <>
-      <div className='container'>
-        <CardList handleCardFocus={handleCardFocus} focusedCard={focusedCard} />
-      </div>
-      {focusedCard && <MoreInfo data={focusedCard} />}
-    </>
-  );
-};
+  // const handleClose = useCallback(() => {
+  //   setFocusedCard(null);
+  // }, []);
+
+  <div className={styles.container}>
+    <CardList />
+  </div>
+);
 
 export default App;
