@@ -32,6 +32,7 @@ const MoreInfo = ({ data, handleClose }) => {
     weather = {},
     main = {},
     wind = {},
+    currentDay,
     city: { sunset = null, sunrise = null },
   } = data ?? {};
 
@@ -42,7 +43,7 @@ const MoreInfo = ({ data, handleClose }) => {
     <div className={styles.container}>
 
       <div className={styles.header}>
-        <div className={styles.title}>Погода сьогодні</div>
+        <div className={styles.title}>Погода на {currentDay}</div>
 
         <button
           className={styles.closeButton}
