@@ -12,8 +12,9 @@ input::-webkit-inner-spin-button {
 }
 
 .container {
-  width: 100%;
+  width: 100vw;
   height: fit-content;
   display: flex;
   padding: 0.5rem;
+  overflow: scroll;
 }
