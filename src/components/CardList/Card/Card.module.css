@@ -2,11 +2,11 @@
   box-shadow: 1px 1px 1px 1px rgb(0, 0, 0, 0.1);
   border-radius: 10px;
   height: fit-content;
-  width: 110px;
   text-align: center;
   font-size: 14px;
   cursor: pointer;
   padding: 10px;
+  flex: 1 0 122px;
 }
 
 .card:hover {

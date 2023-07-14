@@ -1,12 +1,25 @@
-.moreInfo {
-  margin-top: 5px;
+.container {
   display: flex;
-  width: 660px;
-  height: 100%;
-  padding: 10px;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
   box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.75);
   border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.moreInfo {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 370px) {
+  .moreInfo {
+    flex-direction: column;
+  }
 }
 
 .moreInfoImage {
@@ -49,19 +62,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30%;
+  flex: 1;
+  /*width: 30%;*/
 }
 
-.titles {
-  position: relative;
+.rightBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
   border-bottom: 0.5px dotted rgba(80, 79, 79, 0.45);
-  width: 30%;
 }
 
-.titles a {
+.rightBlock a {
   text-decoration: none;
   font-style: italic;
   color: rgba(104, 103, 103, 0.7);
-  position: absolute;
-  bottom: 0;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
