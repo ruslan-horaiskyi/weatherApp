@@ -2,7 +2,6 @@ html,
 body {
   overscroll-behavior-y: none;
   caret-color: transparent;
-  height: 100vw;
 }
 
 input::-webkit-outer-spin-button,
@@ -16,5 +15,5 @@ input::-webkit-inner-spin-button {
   height: fit-content;
   display: flex;
   padding: 0.5rem;
-  overflow: scroll;
+  overflow: hidden;
 }

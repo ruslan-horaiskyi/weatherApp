@@ -17,7 +17,7 @@ const CardList = () => {
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=49.5535&lon=25.5948&units=metric&appid=6de4f63f9a20496939e4772d2b1ae5ff`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=49.5535&lon=25.5948&units=metric&appid=6de4f63f9a20496939e4772d2b1ae5ff`,
     )
       .then((response) => response.json())
       .then((response) => {
@@ -56,14 +56,12 @@ const CardList = () => {
         )}
       </div>
       {focusedCard && (
-        <div className={styles.moreInfoContainer}>
-          <MoreInfo
-            data={weatherData.find(
-              ({ currentDay }) => focusedCard?.currentDay === currentDay
-            )}
-            handleClose={handleClose}
-          />
-        </div>
+        <MoreInfo
+          data={weatherData.find(
+            ({ currentDay }) => focusedCard?.currentDay === currentDay,
+          )}
+          handleClose={handleClose}
+        />
       )}
     </div>
   );

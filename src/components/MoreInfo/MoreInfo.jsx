@@ -39,35 +39,43 @@ const MoreInfo = ({ data, handleClose }) => {
   const formattedSunset = formatTime(sunset);
 
   return (
-    <div className={styles.moreInfo} ref={moreInfoRef}>
-      <div className={styles.leftBlock}>
-        <p>Погода сьогодні</p>
-        <div className={styles.moreInfoImage}>
-          <CustomIcon weatherStatus={weather[0].main} />
+    <div className={styles.container}>
+
+      <div className={styles.header}>
+        <div className={styles.title}>Погода сьогодні</div>
+
+        <button
+          className={styles.closeButton}
+          onClick={handleClose}
+          type="button"
+          aria-label="Close"
+          title="Close"
+        >
+          &#10005;
+        </button>
+      </div>
+
+      <div className={styles.moreInfo} ref={moreInfoRef}>
+        <div className={styles.leftBlock}>
+          <div className={styles.moreInfoImage}>
+            <CustomIcon weatherStatus={weather[0].main} />
+          </div>
+          <div className={styles.infoDaylight}>
+            <span>Схід {formattedSunrise}</span>
+            <span>Захід {formattedSunset}</span>
+          </div>
         </div>
-        <div className={styles.infoDaylight}>
-          <span>Схід {formattedSunrise}</span>
-          <span>Захід {formattedSunset}</span>
+
+        <div className={styles.rightBlock}>
+          <span>Температура, &#8451;: {roundValue(main.temp)}</span>
+          <span>Відчувається як: {roundValue(main.feels_like)}</span>
+          <span>Тиск, мм: {main.pressure}</span>
+          <span>Вологість, %: {main.humidity}</span>
+          <span>Вітер, м/сек: {roundValue(wind.speed)}</span>
+          <a href="https://openweathermap.org/api">openweathermap api</a>
         </div>
       </div>
 
-      <div className={styles.titles}>
-        <p>Температура, &#8451;: {roundValue(main.temp)}</p>
-        <p>Відчувається як: {roundValue(main.feels_like)}</p>
-        <p>Тиск, мм: {main.pressure}</p>
-        <p>Вологість, %: {main.humidity}</p>
-        <p>Вітер, м/сек: {roundValue(wind.speed)}</p>
-        <a href='https://openweathermap.org/api'>openweathermap api</a>
-      </div>
-      <button
-        className={styles.closeButton}
-        onClick={handleClose}
-        type='button'
-        aria-label='Close'
-        title='Close'
-      >
-        &#10005;
-      </button>
     </div>
   );
 };
