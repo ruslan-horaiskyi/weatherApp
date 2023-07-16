@@ -42,7 +42,7 @@ const MoreInfo = ({ data, handleClose }) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.title}>Погода на {currentDay}</div>
+        <div className={styles.title}>Погода за {currentDay}</div>
 
         <button
           className={styles.closeButton}

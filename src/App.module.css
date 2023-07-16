@@ -1,8 +1,8 @@
 html,
 body {
-  caret-color: transparent;
   height: 100vw;
-  background-color: #f6fdff;
+  background-color: #fbfeff;
+  overflow-y: hidden;
 }
 
 input::-webkit-outer-spin-button,
