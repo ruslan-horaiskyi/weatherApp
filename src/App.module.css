@@ -1,6 +1,5 @@
 html,
 body {
-  overscroll-behavior-y: none;
   caret-color: transparent;
 }
 
@@ -16,5 +15,19 @@ input::-webkit-inner-spin-button {
   height: fit-content;
   display: flex;
   padding: 0.5rem;
-  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c6dce4;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
 }

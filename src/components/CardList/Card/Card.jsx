@@ -5,8 +5,6 @@ import { roundValue } from '../../../utils/utils';
 import CustomIcon from '../../CustomIcon/CustomIcon';
 import styles from './Card.module.css';
 
-const celsiusIcon = '℃';
-
 const Card = memo(({ data, isActive, handleClick }) => {
   const clickHandler = useCallback(
     (event) => {
@@ -22,8 +20,8 @@ const Card = memo(({ data, isActive, handleClick }) => {
   const day = date.getDate();
   const weekday = date.toLocaleString('en-US', { weekday: 'long' });
 
-  const minTemp = roundValue(main.temp_min, celsiusIcon);
-  const maxTemp = roundValue(main.temp_max, celsiusIcon);
+  const minTemp = roundValue(main.temp_min);
+  const maxTemp = roundValue(main.temp_max);
 
   return (
     <div
@@ -41,10 +39,12 @@ const Card = memo(({ data, isActive, handleClick }) => {
       </div>
       <div className={styles.temperature}>
         <div>
-          min. <span>{minTemp}</span>
+          <span>min. </span>
+          <span>{minTemp}&deg;</span>
         </div>
         <div>
-          max. <span>{maxTemp}</span>
+          <span>max. </span>
+          <span>{maxTemp}&deg;</span>
         </div>
       </div>
     </div>

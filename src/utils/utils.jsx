@@ -1,7 +1,4 @@
-export const roundValue = (degree = null, unit = '') => {
-  const formattedDegree = Math.round(degree);
-  return `${formattedDegree} ${unit}`;
-};
+export const roundValue = (degree = null) => Math.round(degree);
 
 export const formatTime = (timestamp) => {
   const date = new Date(timestamp * 1000);

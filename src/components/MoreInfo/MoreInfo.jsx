@@ -41,16 +41,15 @@ const MoreInfo = ({ data, handleClose }) => {
 
   return (
     <div className={styles.container}>
-
       <div className={styles.header}>
         <div className={styles.title}>Погода на {currentDay}</div>
 
         <button
           className={styles.closeButton}
           onClick={handleClose}
-          type="button"
-          aria-label="Close"
-          title="Close"
+          type='button'
+          aria-label='Close'
+          title='Close'
         >
           &#10005;
         </button>
@@ -66,17 +65,23 @@ const MoreInfo = ({ data, handleClose }) => {
             <span>Захід {formattedSunset}</span>
           </div>
         </div>
-
-        <div className={styles.rightBlock}>
-          <span>Температура, &#8451;: {roundValue(main.temp)}</span>
-          <span>Відчувається як: {roundValue(main.feels_like)}</span>
-          <span>Тиск, мм: {main.pressure}</span>
-          <span>Вологість, %: {main.humidity}</span>
-          <span>Вітер, м/сек: {roundValue(wind.speed)}</span>
-          <a href="https://openweathermap.org/api">openweathermap api</a>
+        <div className={styles.wrapper}>
+          <div className={styles.centerBlock}>
+            <span>Температура:</span>
+            <span>Відчувається як:</span>
+            <span>Тиск, мм:</span>
+            <span>Вологість, %:</span>
+            <span>Вітер, м/сек:</span>
+          </div>
+          <div className={styles.rightBlock}>
+            <span>{roundValue(main.temp)}&deg;</span>
+            <span>{roundValue(main.feels_like)}&deg;</span>
+            <span>{main.pressure}</span>
+            <span>{main.humidity}</span>
+            <span>{roundValue(wind.speed)}</span>
+          </div>
         </div>
       </div>
-
     </div>
   );
 };

@@ -5,7 +5,16 @@
 
 .cardList {
   display: flex;
-  overflow: scroll;
+}
+
+@media screen and (max-width: 370px) {
+  .cardList {
+    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 0.8rem;
+  }
 }
 
 .closeButton {
