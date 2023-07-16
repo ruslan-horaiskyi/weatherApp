@@ -12,7 +12,7 @@ const SearchForm = ({ onSubmit }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit(cityName);
+    onSubmit(cityName.trim());
   };
 
   return (
