@@ -25,7 +25,7 @@ const MoreInfo = ({ data, handleClose }) => {
   }, [handleClose]);
 
   if (!data) {
-    return <div>No weather data available</div>;
+    return <div>Немає даних про погоду</div>;
   }
 
   const {
