@@ -1,19 +1,19 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  box-shadow: 1px 1px 12px -2px rgba(150, 150, 150, 0.75);
-  border-radius: 10px;
-  padding: 10px;
-  width: 100%;
+  gap: var(--spacing-medium);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-medium);
+  width: var(--width-full);
   max-width: 500px;
-  background-color: rgb(248, 252, 255);
+  background-color: var(--color-background);
 }
 
 .moreInfo {
   display: flex;
-  width: 100%;
-  gap: 10px;
+  width: var(--width-full);
+  gap: var(--spacing-medium);
 }
 
 @media screen and (max-width: 412px) {
@@ -42,56 +42,48 @@
   border-top: 0.5px solid rgba(80, 79, 79, 0.45);
   display: flex;
   justify-content: space-around;
-  gap: 1rem;
+  gap: var(--spacing-medium);
   color: rgba(104, 103, 103, 0.7);
-  margin-top: 16px;
+  margin-top: var(--spacing-large);
 }
 
 .closeButton {
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   height: 32px;
   width: 32px;
   cursor: pointer;
   border: none;
-  box-shadow: 1px 1px 12px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: var(--box-shadow);
 }
 
 .closeButton:hover {
-  background-color: rgba(198, 220, 228, 0.7);
+  background-color: var(--color-background);
   color: rgb(104, 104, 104);
 }
 
 .wrapper {
   display: flex;
-  gap: 0.3rem;
+  gap: var(--spacing-small);
 }
 
 .leftBlock {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   flex: 1;
 }
 
 .rightBlock {
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
 }
 
 .centerBlock {
-  display: flex;
-  flex-direction: column;
   align-items: flex-end;
-  justify-content: space-between;
 }
 
-.rightBlock a {
-  text-decoration: none;
-  font-style: italic;
-  color: rgba(104, 103, 103, 0.7);
-  border-bottom: 0.5px dotted rgba(80, 79, 79, 0.45);
+.leftBlock,
+.centerBlock,
+.rightBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .header {

@@ -1,12 +1,12 @@
 .moreInfo {
-  width: 100%;
+  width: var(--width-full);
   height: 250px;
 }
 
 .cardList {
   display: flex;
-  gap: 0.3rem;
-  transition: all 0.5s ease;
+  gap: var(--spacing-small);
+  transition: all var(--transition-duration) var(--transition-ease);
 }
 
 @media screen and (max-width: 412px) {
@@ -15,15 +15,15 @@
     overflow-y: hidden;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding-bottom: 0.8rem;
-    padding-top: 10px;
-    transition: all 0.5s ease;
+    padding-bottom: var(--spacing-medium);
+    padding-top: var(--spacing-medium);
+    transition: all var(--transition-duration) var(--transition-ease);
   }
 }
 
 .cardListContainer {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 10px;
+  width: var(--width-full);
+  gap: var(--spacing-medium);
 }

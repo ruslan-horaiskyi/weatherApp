@@ -1,3 +1,26 @@
+:root {
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-background: #f8fcff;
+
+  --box-shadow: 1px 1px 12px -2px rgba(150, 150, 150, 0.75);
+
+  --border-radius: 10px;
+
+  --font-size-small: 14px;
+  --font-size-medium: 16px;
+  --font-size-large: 24px;
+
+  --spacing-small: 5px;
+  --spacing-medium: 10px;
+  --spacing-large: 20px;
+
+  --transition-duration: 0.5s;
+  --transition-ease: ease;
+
+  --width-full: 100%;
+}
+
 html,
 body {
   background-color: #fbfeff;
