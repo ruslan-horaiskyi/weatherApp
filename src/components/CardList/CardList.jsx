@@ -18,7 +18,7 @@ const CardList = () => {
     setFocusedCard(null);
   }, []);
 
-  const fetchData = (cityName) => {
+  const fetchData = useCallback((cityName) => {
     if (!cityName) {
       return;
     }
@@ -27,19 +27,19 @@ const CardList = () => {
       `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`
     )
       .then((response) => response.json())
-      .then((response) => {
-        if (response.list && response.list.length > 0) {
-          const filteredData = response.list.reduce((acc, val) => {
+      .then(({ list, city }) => {
+        if (list && list.length > 0) {
+          const filteredData = list.reduce((acc, val) => {
             const currentDay = val.dt_txt.split(' ')[0];
 
             if (acc[currentDay]) {
               return acc;
             }
 
-            acc[currentDay] = { ...val, currentDay };
-            acc[currentDay].city = {
-              sunset: response.city.sunset,
-              sunrise: response.city.sunrise,
+            acc[currentDay] = {
+              ...val,
+              currentDay,
+              city: { sunset: city.sunset, sunrise: city.sunrise },
             };
             return acc;
           }, {});
@@ -52,28 +52,24 @@ const CardList = () => {
         console.log('Error fetching weather data:', error);
         setWeatherData([]);
       });
-  };
+  }, []);
 
   useEffect(() => {
     fetchData('');
-  }, []);
+  }, [fetchData]);
 
   return (
     <div className={styles.cardListContainer}>
       <SearchForm onSubmit={fetchData} />
       <div className={styles.cardList}>
-        {!weatherData ? (
-          <div>No weather data</div>
-        ) : (
-          weatherData.map((dayData) => (
-            <Card
-              key={dayData.currentDay}
-              isActive={focusedCard?.currentDay === dayData.currentDay}
-              data={dayData}
-              handleClick={handleCardFocus}
-            />
-          ))
-        )}
+        {weatherData.map((dayData) => (
+          <Card
+            key={dayData.currentDay}
+            isActive={focusedCard?.currentDay === dayData.currentDay}
+            data={dayData}
+            handleClick={handleCardFocus}
+          />
+        ))}
       </div>
       {focusedCard && (
         <MoreInfo

@@ -14,7 +14,7 @@ const imageMap = {
 };
 
 const CustomIcon = ({ weatherStatus }) => {
-  const [imgSrc, setImgSrc] = useState(null);
+  const [imgSrc, setImgSrc] = useState(defaultIcon);
 
   useEffect(() => {
     import(`../../constants/Img/${imageMap[weatherStatus]}`)
@@ -31,7 +31,13 @@ const CustomIcon = ({ weatherStatus }) => {
     return <img src={defaultIcon} alt={imageMap[weatherStatus]} />;
   }
 
-  return <img src={imgSrc} alt={imageMap[weatherStatus]} />;
+  return (
+    <img
+      src={imgSrc}
+      alt={imageMap[weatherStatus]}
+      onError={() => setImgSrc(defaultIcon)}
+    />
+  );
 };
 
 CustomIcon.propTypes = {

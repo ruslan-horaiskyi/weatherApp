@@ -1,11 +1,15 @@
 import { useCallback, memo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+
 import { roundValue } from '../../../utils/utils';
+
 import CustomIcon from '../../CustomIcon/CustomIcon';
 import styles from './Card.module.css';
 
 const Card = memo(({ data, isActive, handleClick }) => {
+  const { currentDay = '', weather = [], main = {} } = data || {};
+
   const clickHandler = useCallback(
     (event) => {
       event.stopPropagation();
@@ -14,7 +18,6 @@ const Card = memo(({ data, isActive, handleClick }) => {
     [handleClick, data]
   );
 
-  const { currentDay = '', weather = [], main = {} } = data || {};
   const date = new Date(currentDay);
   const month = date.toLocaleString('en-US', { month: 'long' });
   const day = date.getDate();
@@ -69,11 +72,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  data: {
-    currentDay: '',
-    weather: [],
-    main: {},
-  },
+  data: {},
 };
 
 export default Card;

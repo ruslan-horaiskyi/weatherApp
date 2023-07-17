@@ -1,13 +1,13 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 
 import { formatTime, roundValue } from '../../utils/utils';
 
 import CustomIcon from '../CustomIcon/CustomIcon';
 import styles from './MoreInfo.module.css';
 
-const MoreInfo = ({ data, handleClose }) => {
+const MoreInfo = ({ data = null, handleClose }) => {
   const moreInfoRef = useRef(null);
 
   useEffect(() => {
@@ -29,11 +29,11 @@ const MoreInfo = ({ data, handleClose }) => {
   }
 
   const {
-    weather = {},
+    weather = [],
     main = {},
     wind = {},
     currentDay,
-    city: { sunset = null, sunrise = null },
+    city: { sunset = null, sunrise = null } = {},
   } = data ?? {};
 
   const formattedSunrise = formatTime(sunrise);
@@ -100,4 +100,4 @@ MoreInfo.defaultProps = {
   data: null,
 };
 
-export default MoreInfo;
+export default memo(MoreInfo);
