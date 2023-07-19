@@ -7,7 +7,7 @@
   cursor: pointer;
   padding: var(--spacing-medium);
   flex: 1 0 122px;
-  background-color: var(--color-background);
+  background-color: var(--color-primary);
   transition: all var(--transition-duration) var(--transition-ease);
   max-width: 120px;
 }
@@ -15,7 +15,7 @@
 .card:hover,
 .focused {
   transform: translate(0, -5px);
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-focused);
 }
 
 .cardImage {
