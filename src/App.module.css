@@ -2,6 +2,7 @@
   --color-primary: rgb(243, 249, 255);
   --color-secondary: rgb(174, 198, 218);
   --color-background: rgb(255, 255, 255);
+  --color-error: rgb(241, 75, 75);
 
   --shadow-color: 0deg 0% 0%;
   --box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.1),

@@ -9,6 +9,8 @@ const apiKey = '6de4f63f9a20496939e4772d2b1ae5ff';
 const CardList = () => {
   const [focusedCard, setFocusedCard] = useState(null);
   const [weatherData, setWeatherData] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleCardFocus = useCallback((date) => {
     setFocusedCard(date);
@@ -26,7 +28,16 @@ const CardList = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(
+          response.status === 404
+            ? 'City not found'
+            : 'Error fetching weather data'
+        );
+      })
       .then(({ list, city }) => {
         if (list && list.length > 0) {
           const filteredData = list.reduce((acc, val) => {
@@ -44,13 +55,18 @@ const CardList = () => {
             return acc;
           }, {});
           setWeatherData(Object.values(filteredData));
+          setErrorMessage(null);
         } else {
           setWeatherData([]);
+          setErrorMessage('No weather data available');
         }
       })
       .catch((error) => {
-        console.log('Error fetching weather data:', error);
+        console.log('Error:', error.message);
         setWeatherData([]);
+        setErrorMessage(
+          'There is no such city in the database. Please check your request and try again.'
+        );
       });
   }, []);
 
@@ -58,9 +74,34 @@ const CardList = () => {
     fetchData('');
   }, [fetchData]);
 
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (errorMessage) {
+      setShowTooltip(true);
+      const timeout = setTimeout(() => {
+        setErrorMessage('');
+        setShowTooltip(false);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [errorMessage]);
+
   return (
-    <div className={styles.cardListContainer}>
+    <div
+      className={
+        styles.cardListContainer + (showTooltip ? ' cityNameError' : '')
+      }
+    >
       <SearchForm onSubmit={fetchData} />
+
+      <div
+        className={errorMessage ? styles.showErrorTooltip : styles.errorTooltip}
+        data-tooltip={errorMessage}
+      />
+
       <div className={styles.cardList}>
         {weatherData.map((dayData) => (
           <Card

@@ -38,7 +38,7 @@ const SearchForm = ({ onSubmit }) => {
         type='text'
         value={cityName}
         onChange={handleInputChange}
-        placeholder='enter the name of the city here'
+        placeholder='Enter the name of the city here'
       />
       <button type='submit'>Search</button>
     </form>

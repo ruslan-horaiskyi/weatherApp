@@ -27,3 +27,28 @@
     transition: all var(--transition-duration) var(--transition-ease);
   }
 }
+
+.showErrorTooltip::after {
+  content: attr(data-tooltip);
+  text-align: justify;
+  max-width: 350px;
+  position: absolute;
+  top: 35px;
+  left: 7%;
+  right: 7%;
+  padding: 5px;
+  border-bottom-left-radius: var(--spacing-small);
+  border-bottom-right-radius: var(--spacing-small);
+  border-top-right-radius: var(--spacing-small);
+  background-color: var(--color-error);
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.errorTooltip {
+  opacity: 0;
+  visibility: hidden;
+}
