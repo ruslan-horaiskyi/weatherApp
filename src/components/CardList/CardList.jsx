@@ -90,15 +90,11 @@ const CardList = () => {
   }, [errorMessage]);
 
   return (
-    <div
-      className={
-        styles.cardListContainer + (showTooltip ? ' cityNameError' : '')
-      }
-    >
+    <div className={styles.cardListContainer}>
       <SearchForm onSubmit={fetchData} />
 
       <div
-        className={errorMessage ? styles.showErrorTooltip : styles.errorTooltip}
+        className={showTooltip ? styles.showErrorTooltip : styles.errorTooltip}
         data-tooltip={errorMessage}
       />
 
