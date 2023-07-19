@@ -5,41 +5,31 @@
 
 .cardList {
   display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-small);
   gap: var(--spacing-small);
   transition: all var(--transition-duration) var(--transition-ease);
+  scroll-behavior: smooth;
+  overflow: scroll auto;
+  padding: var(--spacing-medium) 0;
+  width: 100%;
 }
 
 .cardListContainer {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  width: var(--width-full);
+  width: 100%;
   gap: var(--spacing-medium);
-}
-
-@media screen and (max-width: 375px) {
-  .cardList {
-    overflow: scroll;
-    overflow-y: hidden;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: var(--spacing-medium);
-    padding-top: var(--spacing-medium);
-    transition: all var(--transition-duration) var(--transition-ease);
-  }
 }
 
 .showErrorTooltip::after {
   content: attr(data-tooltip);
   text-align: justify;
   max-width: 350px;
-  position: absolute;
-  top: 35px;
-  left: 7%;
-  right: 7%;
-  padding: 5px;
-  border-bottom-left-radius: var(--spacing-small);
-  border-bottom-right-radius: var(--spacing-small);
-  border-top-right-radius: var(--spacing-small);
+  padding: var(--spacing-small);
+  border-radius: var(--spacing-small);
   background-color: var(--color-error);
   color: white;
   font-size: 14px;

@@ -108,6 +108,7 @@ const CardList = () => {
           />
         ))}
       </div>
+
       {focusedCard && (
         <MoreInfo
           data={weatherData.find(

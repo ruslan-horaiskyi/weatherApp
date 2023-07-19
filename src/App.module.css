@@ -32,6 +32,10 @@ body {
   background-color: var(--color-background);
   overflow-y: hidden;
   max-width: var(--width-desktop);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
 input::-webkit-outer-spin-button,
@@ -42,7 +46,7 @@ input::-webkit-inner-spin-button {
 
 .container {
   width: 100vw;
-  max-width: 760px;
+  max-width: 780px;
   height: fit-content;
   display: flex;
   padding: 0.5rem;

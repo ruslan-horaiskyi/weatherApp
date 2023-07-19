@@ -6,10 +6,9 @@
   font-size: var(--font-size-small);
   cursor: pointer;
   padding: var(--spacing-medium);
-  flex: 1 0 122px;
   background-color: var(--color-primary);
   transition: all var(--transition-duration) var(--transition-ease);
-  max-width: 120px;
+  min-width: 120px;
 }
 
 .card:hover,
@@ -26,8 +25,7 @@
 }
 
 .cardImage img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
   padding: var(--spacing-small);
 }
 
