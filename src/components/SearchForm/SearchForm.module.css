@@ -1,8 +1,8 @@
 .searchForm {
-  box-shadow: var(--box-shadow);
   margin: 5px 0;
   border-radius: 10px;
   display: flex;
+  width: 100%;
 }
 
 .searchForm:focus {
@@ -11,6 +11,8 @@
 }
 
 .searchForm input {
+  display: flex;
+  flex: 1;
   padding: var(--spacing-medium);
   background-color: var(--color-primary);
   font-size: 1rem;
@@ -19,15 +21,11 @@
   outline: none;
   border: none;
   transition: all 0.5s ease;
-  width: 680px;
+  box-shadow: var(--box-shadow);
 }
 
-.searchForm input:focus {
-  padding-left: 7px;
-}
-
-.searchForm input:hover {
-  padding-left: 7px;
+.searchForm input:focus, .searchForm input:hover {
+  padding-left: var(--spacing-large);
 }
 
 .searchForm button {
@@ -40,6 +38,8 @@
   transition: all 0.5s ease;
   background-color: var(--color-primary);
   border-left: 1px solid rgb(192, 192, 192);
+  padding: var(--spacing-medium);
+  box-shadow: var(--box-shadow);
 }
 
 .searchForm button:hover {
@@ -73,4 +73,25 @@
   animation-name: shake;
   animation-duration: 0.5s;
   animation-timing-function: ease-in-out;
+}
+
+@media screen and (max-width: 375px) {
+  .searchForm input {
+    border-radius: var(--spacing-medium);
+  }
+
+  .searchForm {
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .searchForm button {
+    border-radius: var(--spacing-medium);
+    padding: var(--spacing-small);
+    border-left: none;
+  }
+
+  .searchForm button:hover {
+    padding: var(--spacing-small);
+  }
 }

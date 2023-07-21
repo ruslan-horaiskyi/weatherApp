@@ -38,9 +38,9 @@ const SearchForm = ({ onSubmit }) => {
         type='text'
         value={cityName}
         onChange={handleInputChange}
-        placeholder='Enter the name of the city here'
+        placeholder='Введіть назву населеного пункту'
       />
-      <button type='submit'>Search</button>
+      <button type='submit'>Пошук</button>
     </form>
   );
 };
