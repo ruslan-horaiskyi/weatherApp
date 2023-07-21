@@ -41,11 +41,11 @@ const Card = memo(({ data, isActive, handleClick }) => {
         <CustomIcon weatherStatus={weather[0]?.main} />
       </div>
       <div className={styles.temperature}>
-        <div>
+        <div className={styles.temperatureBox}>
           <span className={styles.temperatureText}>min. </span>
           <span>{minTemp}&deg;</span>
         </div>
-        <div>
+        <div className={styles.temperatureBox}>
           <span className={styles.temperatureText}>max. </span>
           <span>{maxTemp}&deg;</span>
         </div>

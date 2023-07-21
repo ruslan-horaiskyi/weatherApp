@@ -1,13 +1,13 @@
 .cardList {
   display: flex;
   justify-content: space-between;
-  padding: var(--spacing-small);
   gap: var(--spacing-small);
   transition: all var(--transition-duration) var(--transition-ease);
   scroll-behavior: smooth;
   overflow: scroll auto;
-  padding: var(--spacing-medium) var(--spacing-small);
+  padding: var(--spacing-medium);
   width: 100%;
+  max-width: fit-content;
 }
 
 .cardListContainer {

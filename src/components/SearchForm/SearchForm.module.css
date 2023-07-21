@@ -3,6 +3,7 @@
   border-radius: 10px;
   display: flex;
   width: 100%;
+  opacity: 0.9;
 }
 
 .searchForm:focus {

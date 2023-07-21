@@ -27,14 +27,18 @@
   --width-full: 100%;
 }
 
+html {
+  background-image: url("./constants/Img/background.jpg");
+}
+
 html,
 body {
-  background-color: var(--color-background);
+  background-color: transparent;
   overflow-y: hidden;
   max-width: var(--width-desktop);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   height: 90vh;
 }
 
@@ -49,7 +53,7 @@ input::-webkit-inner-spin-button {
   max-width: 780px;
   height: fit-content;
   display: flex;
-  padding: 0.5rem;
+  padding: 4rem 0.5rem;
 }
 
 ::-webkit-scrollbar {

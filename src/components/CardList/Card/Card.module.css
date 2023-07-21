@@ -9,6 +9,7 @@
   background-color: var(--color-primary);
   transition: all var(--transition-duration) var(--transition-ease);
   min-width: 120px;
+  opacity: 0.9;
 }
 
 .card:hover,
@@ -46,6 +47,11 @@
   justify-content: space-around;
   font-size: var(--font-size-medium);
   margin: 5px 0;
+}
+
+.temperatureBox {
+  display: flex;
+  flex-direction: column;
 }
 
 .temperatureText {
