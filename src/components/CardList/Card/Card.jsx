@@ -43,11 +43,17 @@ const Card = memo(({ data, isActive, handleClick }) => {
       <div className={styles.temperature}>
         <div className={styles.temperatureBox}>
           <span className={styles.temperatureText}>min. </span>
-          <span>{minTemp}&deg;</span>
+          <span>
+            {minTemp}
+            &deg;
+          </span>
         </div>
         <div className={styles.temperatureBox}>
           <span className={styles.temperatureText}>max. </span>
-          <span>{maxTemp}&deg;</span>
+          <span>
+            {maxTemp}
+            &deg;
+          </span>
         </div>
       </div>
     </div>

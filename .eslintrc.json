@@ -16,8 +16,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "prettier"],
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
     "react/function-component-definition": [
       2,

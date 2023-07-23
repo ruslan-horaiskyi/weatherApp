@@ -42,7 +42,10 @@ const MoreInfo = ({ data = null, handleClose }) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.title}>Погода за {currentDay}</div>
+        <div className={styles.title}>
+          Погода за
+          {currentDay}
+        </div>
 
         <button
           className={styles.closeButton}
@@ -61,8 +64,14 @@ const MoreInfo = ({ data = null, handleClose }) => {
             <CustomIcon weatherStatus={weather[0].main} />
           </div>
           <div className={styles.infoDaylight}>
-            <span>Схід {formattedSunrise}</span>
-            <span>Захід {formattedSunset}</span>
+            <span>
+              Схід
+              {formattedSunrise}
+            </span>
+            <span>
+              Захід
+              {formattedSunset}
+            </span>
           </div>
         </div>
         <div className={styles.wrapper}>
@@ -74,8 +83,14 @@ const MoreInfo = ({ data = null, handleClose }) => {
             <span>Вітер, м/сек:</span>
           </div>
           <div className={styles.rightBlock}>
-            <span>{roundValue(main.temp)}&deg;</span>
-            <span>{roundValue(main.feels_like)}&deg;</span>
+            <span>
+              {roundValue(main.temp)}
+              &deg;
+            </span>
+            <span>
+              {roundValue(main.feels_like)}
+              &deg;
+            </span>
             <span>{main.pressure}</span>
             <span>{main.humidity}</span>
             <span>{roundValue(wind.speed)}</span>

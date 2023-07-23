@@ -1,102 +1,43 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from './Card/Card';
 import MoreInfo from '../MoreInfo/MoreInfo';
 import styles from './CardList.module.css';
 import SearchForm from '../SearchForm/SearchForm';
-
-const apiKey = '6de4f63f9a20496939e4772d2b1ae5ff';
+import useWeatherData from './useWeatherData';
 
 const CardList = () => {
   const [focusedCard, setFocusedCard] = useState(null);
-  const [weatherData, setWeatherData] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [showTooltip, setShowTooltip] = useState(false);
+  const { weatherData, errorMessage, fetchData } = useWeatherData();
 
-  const handleCardFocus = useCallback((date) => {
+  const handleCardFocus = (date) => {
     setFocusedCard(date);
-  }, []);
+  };
 
-  const handleClose = useCallback(() => {
+  const handleClose = () => {
     setFocusedCard(null);
-  }, []);
+  };
 
-  const fetchData = useCallback((cityName) => {
-    if (!cityName) {
-      return;
-    }
-
-    fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error(
-          response.status === 404
-            ? 'City not found'
-            : 'Error fetching weather data'
-        );
-      })
-      .then(({ list, city }) => {
-        if (list && list.length > 0) {
-          const filteredData = list.reduce((acc, val) => {
-            const currentDay = val.dt_txt.split(' ')[0];
-
-            if (acc[currentDay]) {
-              return acc;
-            }
-
-            acc[currentDay] = {
-              ...val,
-              currentDay,
-              city: { sunset: city.sunset, sunrise: city.sunrise },
-            };
-            return acc;
-          }, {});
-          setWeatherData(Object.values(filteredData));
-          setErrorMessage(null);
-        } else {
-          setWeatherData([]);
-          setErrorMessage('No weather data available');
-        }
-      })
-      .catch((error) => {
-        console.log('Error:', error.message);
-        setWeatherData([]);
-        setErrorMessage(
-          'There is no such city in the database. Please check your request and try again.'
-        );
-      });
-  }, []);
-
-  useEffect(() => {
-    fetchData('');
-  }, [fetchData]);
-
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (errorMessage) {
-      setShowTooltip(true);
       const timeout = setTimeout(() => {
-        setErrorMessage('');
-        setShowTooltip(false);
+        fetchData('');
       }, 2000);
 
       return () => {
         clearTimeout(timeout);
       };
     }
-  }, [errorMessage]);
+    // eslint-disable-next-line prettier/prettier
+    return () => { };
+  }, [errorMessage, fetchData]);
 
   return (
     <div className={styles.cardListContainer}>
       <SearchForm onSubmit={fetchData} />
 
-      <div
-        className={showTooltip ? styles.showErrorTooltip : styles.errorTooltip}
-        data-tooltip={errorMessage}
-      />
+      {errorMessage && (
+        <div className={styles.showErrorTooltip} data-tooltip={errorMessage} />
+      )}
 
       <div className={styles.cardList}>
         {weatherData.map((dayData) => (
