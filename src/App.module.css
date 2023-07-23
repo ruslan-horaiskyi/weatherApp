@@ -31,11 +31,10 @@ html {
   background-image: url("./constants/Img/background.jpg");
 }
 
-html,
 body {
-  background-color: transparent;
+  margin: 0;
   overflow-y: hidden;
-  max-width: var(--width-desktop);
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -46,14 +45,6 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-.container {
-  width: 100vw;
-  max-width: 780px;
-  height: fit-content;
-  display: flex;
-  padding: 4rem 0.5rem;
 }
 
 ::-webkit-scrollbar {
@@ -69,4 +60,12 @@ input::-webkit-inner-spin-button {
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
+}
+
+.container {
+  width: 100vw;
+  max-width: 780px;
+  height: fit-content;
+  display: flex;
+  padding: 4rem 0.5rem;
 }

@@ -8,7 +8,7 @@
   padding: var(--spacing-medium);
   background-color: var(--color-primary);
   transition: all var(--transition-duration) var(--transition-ease);
-  min-width: 120px;
+  min-width: 110px;
   opacity: 0.9;
 }
 

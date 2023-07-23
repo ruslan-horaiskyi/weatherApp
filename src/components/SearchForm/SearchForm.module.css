@@ -1,6 +1,6 @@
 .searchForm {
   margin: 5px 0;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   display: flex;
   width: 100%;
   opacity: 0.9;
@@ -8,7 +8,7 @@
 
 .searchForm:focus {
   padding-left: 7px;
-  transition: all 0.5s ease;
+  transition: all var(--transition-duration) var(--transition-ease);
 }
 
 .searchForm input {
@@ -17,26 +17,26 @@
   padding: var(--spacing-medium);
   background-color: var(--color-primary);
   font-size: 1rem;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
   outline: none;
   border: none;
-  transition: all 0.5s ease;
+  transition: all var(--transition-duration) var(--transition-ease);
   box-shadow: var(--box-shadow);
 }
 
-.searchForm input:focus, .searchForm input:hover {
+.searchForm input:focus, 
+.searchForm input:hover {
   padding-left: var(--spacing-large);
 }
 
 .searchForm button {
   cursor: pointer;
   font-size: 1rem;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  outline: none;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
   border: none;
-  transition: all 0.5s ease;
+  transition: all var(--transition-duration) var(--transition-ease);
   background-color: var(--color-primary);
   border-left: 1px solid rgb(192, 192, 192);
   padding: var(--spacing-medium);
@@ -88,11 +88,10 @@
 
   .searchForm button {
     border-radius: var(--spacing-medium);
-    padding: var(--spacing-small);
     border-left: none;
   }
 
   .searchForm button:hover {
-    padding: var(--spacing-small);
+    padding: var(--spacing-medium);
   }
 }
