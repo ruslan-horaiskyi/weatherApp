@@ -11,6 +11,8 @@ const useWeatherData = () => {
       return;
     }
 
+    setErrorMessage('');
+
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`
     )
@@ -57,16 +59,12 @@ const useWeatherData = () => {
   };
 
   useEffect(() => {
-    if (errorMessage) {
-      const timeout = setTimeout(() => {
-        setErrorMessage('');
-      }, 2000);
-      return () => {
-        clearTimeout(timeout);
-      };
-    }
-    // eslint-disable-next-line prettier/prettier
-    return () => { };
+    const timeout = setTimeout(() => {
+      setErrorMessage('');
+    }, 4000);
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [errorMessage]);
 
   return { weatherData, errorMessage, fetchData };

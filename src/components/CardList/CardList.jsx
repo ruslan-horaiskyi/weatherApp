@@ -8,6 +8,7 @@ import useWeatherData from './useWeatherData';
 const CardList = () => {
   const [focusedCard, setFocusedCard] = useState(null);
   const { weatherData, errorMessage, fetchData } = useWeatherData();
+  const [tooltipVisible, setTooltipVisible] = useState(false); // New state for tooltip visibility
 
   const handleCardFocus = (date) => {
     setFocusedCard(date);
@@ -23,8 +24,11 @@ const CardList = () => {
         fetchData('');
       }, 2000);
 
+      setTooltipVisible(true);
+
       return () => {
         clearTimeout(timeout);
+        setTooltipVisible(false);
       };
     }
     // eslint-disable-next-line prettier/prettier
@@ -35,9 +39,12 @@ const CardList = () => {
     <div className={styles.cardListContainer}>
       <SearchForm onSubmit={fetchData} />
 
-      {errorMessage && (
-        <div className={styles.showErrorTooltip} data-tooltip={errorMessage} />
-      )}
+      <div
+        className={
+          tooltipVisible ? styles.showErrorTooltip : styles.errorTooltip
+        }
+        data-tooltip={errorMessage}
+      />
 
       <div className={styles.cardList}>
         {weatherData.map((dayData) => (

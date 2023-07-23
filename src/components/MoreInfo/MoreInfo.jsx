@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import { useEffect, useRef, memo } from 'react';
 
@@ -103,10 +102,21 @@ const MoreInfo = ({ data = null, handleClose }) => {
 
 MoreInfo.propTypes = {
   data: PropTypes.shape({
-    weather: PropTypes.array.isRequired,
-    wind: PropTypes.object.isRequired,
-    main: PropTypes.object.isRequired,
-    city: PropTypes.object.isRequired,
+    weather: PropTypes.arrayOf(
+      PropTypes.shape({
+        main: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    wind: PropTypes.shape({
+      speed: PropTypes.number.isRequired,
+    }).isRequired,
+    main: PropTypes.shape({
+      temp: PropTypes.number.isRequired,
+      feels_like: PropTypes.number.isRequired,
+      pressure: PropTypes.number.isRequired,
+      humidity: PropTypes.number.isRequired,
+    }).isRequired,
+    city: PropTypes.shape({}).isRequired,
   }),
   handleClose: PropTypes.func.isRequired,
 };
