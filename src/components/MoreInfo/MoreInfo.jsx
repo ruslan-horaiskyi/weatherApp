@@ -42,7 +42,7 @@ const MoreInfo = ({ data = null, handleClose }) => {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.title}>
-          Погода за
+          <span>Погода на </span>
           {currentDay}
         </div>
 
@@ -63,14 +63,15 @@ const MoreInfo = ({ data = null, handleClose }) => {
             <CustomIcon weatherStatus={weather[0].main} />
           </div>
           <div className={styles.infoDaylight}>
-            <span>
-              Схід
-              {formattedSunrise}
-            </span>
-            <span>
-              Захід
-              {formattedSunset}
-            </span>
+            <div>
+              <span>Схід </span>
+              <span>{formattedSunrise}</span>
+            </div>
+
+            <div>
+              <span>Захід </span>
+              <span>{formattedSunset}</span>
+            </div>
           </div>
         </div>
         <div className={styles.wrapper}>

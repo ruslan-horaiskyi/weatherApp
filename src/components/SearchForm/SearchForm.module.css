@@ -3,7 +3,9 @@
   border-radius: var(--border-radius);
   display: flex;
   width: 100%;
-  opacity: 0.9;
+  opacity: 0.7;
+
+  /* background: rgba(0, 0, 0, 0.44); */
 }
 
 .searchForm:focus {
@@ -12,40 +14,53 @@
 }
 
 .searchForm input {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.44);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
   display: flex;
   flex: 1;
   padding: var(--spacing-medium);
-  background-color: var(--color-primary);
+  /* background-color: var(--color-primary); */
   font-size: 1rem;
   border-top-left-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
   outline: none;
-  border: none;
+  /* border: none; */
   transition: all var(--transition-duration) var(--transition-ease);
-  box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
 }
 
 .searchForm input:focus,
 .searchForm input:hover {
   padding-left: var(--spacing-large);
+  background-color: var(--color-primary);
+  color: #000;
 }
 
 .searchForm button {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.44);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
   cursor: pointer;
   font-size: 1rem;
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
-  border: none;
+  /* border: none; */
   outline: none;
   transition: all var(--transition-duration) var(--transition-ease);
-  background-color: var(--color-primary);
+  /* background-color: var(--color-primary); */
   border-left: 1px solid rgb(192, 192, 192);
   padding: var(--spacing-medium);
-  box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
 }
 
 .searchForm button:hover {
   padding: 0 20px;
+  background-color: var(--color-primary);
+  color: #000;
 }
 
 @keyframes shake {
@@ -78,17 +93,18 @@
 }
 
 @media screen and (max-width: 375px) {
-  .searchForm input {
-    border-radius: var(--spacing-medium);
-  }
-
   .searchForm {
     flex-direction: column;
     gap: 0.5rem;
   }
 
+  .searchForm input {
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+  }
+
   .searchForm button {
-    border-radius: var(--spacing-medium);
+    border-radius: var(--border-radius);
     border-left: none;
   }
 

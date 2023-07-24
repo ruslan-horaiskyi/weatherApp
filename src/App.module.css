@@ -9,9 +9,10 @@
     0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.1),
     1px 2px 2.5px -2.5px hsl(var(--shadow-color) / 0.1);
 
-  --box-shadow-focused: 1px 1px 12px -2px rgba(150, 150, 150, 0.75);
+  --box-shadow-focused: 0.3px 0.8px 1.3px hsl(var(--shadow-color) / 0),
+    1px 2.4px 3.9px hsl(var(--shadow-color) / 0.25);
 
-  --border-radius: 10px;
+  --border-radius: 16px;
 
   --font-size-small: 14px;
   --font-size-medium: 16px;
@@ -27,18 +28,47 @@
   --width-full: 100%;
 }
 
-html {
+/* html {
   background-image: url("./constants/Img/background.jpg");
-}
+} */
 
 body {
-  margin: 0;
+  /* margin: 0;
   overflow-y: hidden;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: start;
-  height: 90vh;
+  height: 90vh; */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 10px;
+  background: #221f2f;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-color: #ed2ff0;
+  left: 15%;
+  top: 20%;
+  filter: blur(150px);
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-color: #22a8cd;
+  left: 80%;
+  top: 74%;
+  filter: blur(150px);
 }
 
 input::-webkit-outer-spin-button,
