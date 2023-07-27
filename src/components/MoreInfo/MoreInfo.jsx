@@ -85,11 +85,11 @@ const MoreInfo = ({ data = null, handleClose }) => {
           <div className={styles.rightBlock}>
             <span>
               {roundValue(main.temp)}
-              &deg;
+              &#8451;
             </span>
             <span>
               {roundValue(main.feels_like)}
-              &deg;
+              &#8451;
             </span>
             <span>{main.pressure}</span>
             <span>{main.humidity}</span>
