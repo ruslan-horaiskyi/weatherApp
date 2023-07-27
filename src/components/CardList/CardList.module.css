@@ -18,20 +18,3 @@
   width: 100%;
   gap: var(--spacing-medium);
 }
-
-.showErrorTooltip::after {
-  content: attr(data-tooltip);
-  text-align: justify;
-  padding: var(--spacing-small);
-  border-radius: var(--spacing-small);
-  background-color: var(--color-error);
-  color: white;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.errorTooltip {
-  opacity: 0;
-  visibility: hidden;
-}

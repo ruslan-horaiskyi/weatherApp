@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import defaultIcon from '../../constants/Img/default.svg';
+import defaultIcon from '../../assets/images/default.svg';
 
 const imageMap = {
   Rain: 'Rain.svg',
@@ -17,7 +17,7 @@ const CustomIcon = ({ weatherStatus }) => {
   const [imgSrc, setImgSrc] = useState(defaultIcon);
 
   useEffect(() => {
-    import(`../../constants/Img/${imageMap[weatherStatus]}`)
+    import(`../../assets/images/${imageMap[weatherStatus]}`)
       .then((imageModule) => {
         const loadedImage = imageModule.default;
         setImgSrc(loadedImage);
