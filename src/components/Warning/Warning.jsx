@@ -1,24 +1,32 @@
 import { useEffect, useState } from 'react';
 import styles from './Warning.module.css';
 
+import classNames from 'classnames';
+
+// Винести цю логіку в кстомний хук Ворнінга
 const Warning = ({ errorMessage }) => {
     const [tooltipVisible, setTooltipVisible] = useState(false);
 
     useEffect(() => {
-        if (errorMessage) {
-            setTooltipVisible(true);
 
-            return () => {
-                setTooltipVisible(false);
-            };
-        }
+        setTooltipVisible(true);
+        const timeout = setTimeout(() => {
+            setTooltipVisible(false);
+        }, 4000);
 
-        return () => { };
-    }, [errorMessage]);
+        return () => { clearTimeout(timeout); }
+
+    }, []);
+
+    // if (!tooltipVisible) {
+    //     return
+    // }
+
+    // TODO: CLASSNAMES
 
     return (
         <div
-            className={tooltipVisible ? styles.showErrorTooltip : styles.errorTooltip}
+            className={classNames(styles.showErrorTooltip, { [styles.errorTooltip]: !tooltipVisible })}
             data-tooltip={errorMessage}
         />
     );

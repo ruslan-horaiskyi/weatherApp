@@ -1,12 +1,19 @@
+import { createContext, useState } from 'react';
+
 import 'modern-normalize';
 import CardList from './components/CardList/CardList';
 
 import styles from './App.module.css';
 
-const App = () => (
-  <div className={styles.container}>
-    <CardList />
-  </div>
-);
+export const WeatherContext = createContext(1);
 
+const App = () => {
+  const [weatherData, setWeatherData] = useState([]);
+
+  return <div className={styles.container}>
+    <WeatherContext.Provider value={{ weatherData, setWeatherData }}>
+      <CardList />
+    </WeatherContext.Provider>
+  </div>
+}
 export default App;

@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+
+import { WeatherContext } from '../../App';
 
 const apiKey = '6de4f63f9a20496939e4772d2b1ae5ff';
 
 const useWeatherData = () => {
-  const [weatherData, setWeatherData] = useState([]);
+  // const [weatherData, setWeatherData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const { setWeatherData } = useContext(WeatherContext);
+
 
   const fetchData = (cityName) => {
     if (!cityName) {
@@ -58,16 +62,18 @@ const useWeatherData = () => {
       });
   };
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setErrorMessage('');
-    }, 4000);
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [errorMessage]);
+  // TODO: Винести цю логіку в кстомний хук Ворнінга
 
-  return { weatherData, errorMessage, fetchData };
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setErrorMessage('');
+  //   }, 4000);
+  //   return () => {
+  //     clearTimeout(timeout);
+  //   };
+  // }, [errorMessage]);
+
+  return { errorMessage, fetchData };
 };
 
 export default useWeatherData;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Card from './Card/Card';
 import MoreInfo from '../MoreInfo/MoreInfo';
 import styles from './CardList.module.css';
@@ -6,9 +6,14 @@ import SearchForm from '../SearchForm/SearchForm';
 import useWeatherData from './useWeatherData';
 import Warning from '../Warning/Warning';
 
+import { WeatherContext } from '../../App'
+
 const CardList = () => {
+  console.log('cardList');
   const [focusedCard, setFocusedCard] = useState(null);
-  const { weatherData, errorMessage, fetchData } = useWeatherData();
+  const { errorMessage, fetchData } = useWeatherData();
+
+  const { weatherData } = useContext(WeatherContext);
 
   const handleCardFocus = (date) => {
     setFocusedCard(date);
@@ -22,7 +27,7 @@ const CardList = () => {
     <div className={styles.cardListContainer}>
       <SearchForm onSubmit={fetchData} />
 
-      <Warning errorMessage={errorMessage} />
+      {errorMessage && <Warning errorMessage={errorMessage} />}
 
       <div className={styles.cardList}>
         {weatherData.map((dayData) => (

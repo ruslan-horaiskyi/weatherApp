@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './SearchForm.module.css';
 
 const SearchForm = ({ onSubmit }) => {
+  console.log('searchForm');
   const inputRef = useRef(null);
   const [cityName, setCityName] = useState('');
   const [hasWarning, setHasWarning] = useState(false);
