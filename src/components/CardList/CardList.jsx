@@ -20,7 +20,6 @@ const CardList = () => {
 
   return (
     <div className={styles.cardListContainer}>
-      <SearchForm />
 
       <div className={styles.cardList}>
         {weatherData.map((dayData) => (

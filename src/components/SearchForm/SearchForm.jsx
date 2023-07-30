@@ -3,6 +3,8 @@ import { WeatherContext } from '../WeatherProvider/WeatherProvider';
 import Warning from '../Warning/Warning';
 import useWeatherData from '../useWeatherData/useWeatherData'
 
+import CardList from '../CardList/CardList';
+
 import styles from './SearchForm.module.css';
 
 const SearchForm = () => {
@@ -46,7 +48,10 @@ const SearchForm = () => {
         />
         <button type='submit'>Search</button>
       </form>
+
       {errorMessage && <Warning errorMessage={errorMessage} />}
+
+      <CardList />
     </>
   );
 };

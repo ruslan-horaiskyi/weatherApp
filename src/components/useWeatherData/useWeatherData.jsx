@@ -1,11 +1,11 @@
-import { useContext } from 'react';
-
+import { useContext, useState } from 'react';
 import { WeatherContext } from '../WeatherProvider/WeatherProvider';
 
 const apiKey = '6de4f63f9a20496939e4772d2b1ae5ff';
 
 const useWeatherData = () => {
   const { setWeatherData, errorMessage, setErrorMessage } = useContext(WeatherContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = (cityName) => {
     if (!cityName) {
@@ -13,6 +13,7 @@ const useWeatherData = () => {
     }
 
     setErrorMessage('');
+    setIsLoading(true);
 
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`
@@ -56,10 +57,15 @@ const useWeatherData = () => {
         setErrorMessage(
           'There is no such city in the database, please check your input and try again...'
         );
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       });
   };
 
-  return { errorMessage, fetchData };
+  return { errorMessage, fetchData, isLoading };
 };
 
 export default useWeatherData;

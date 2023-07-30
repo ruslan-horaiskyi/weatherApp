@@ -3,5 +3,6 @@
   max-width: 780px;
   height: fit-content;
   display: flex;
+  flex-direction: column;
   padding: 4rem 1rem 0.5rem;
 }
