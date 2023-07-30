@@ -16,15 +16,15 @@ const MoreInfo = ({ data = null, handleClose }) => {
       }
     };
 
-    document.body.addEventListener('click', handleClickOutside);
+    window.addEventListener('click', handleClickOutside);
 
     return () => {
-      document.body.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('click', handleClickOutside);
     };
   }, [handleClose]);
 
   if (!data) {
-    return <div>Немає даних про погоду</div>;
+    return <div>No weather data</div>;
   }
 
   const {
@@ -39,11 +39,11 @@ const MoreInfo = ({ data = null, handleClose }) => {
   const formattedSunset = formatTime(sunset);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={moreInfoRef}>
       <div className={styles.header}>
         <div className={styles.title}>
-          <span>Погода на </span>
-          {currentDay}
+          <span>Weather for: </span>
+          <span>{currentDay}</span>
         </div>
 
         <button
@@ -57,30 +57,30 @@ const MoreInfo = ({ data = null, handleClose }) => {
         </button>
       </div>
 
-      <div className={styles.moreInfo} ref={moreInfoRef}>
+      <div className={styles.moreInfo}>
         <div className={styles.leftBlock}>
           <div className={styles.moreInfoImage}>
             <CustomIcon weatherStatus={weather[0].main} />
           </div>
           <div className={styles.infoDaylight}>
             <div>
-              <span>Схід </span>
+              <span>Sunrise </span>
               <span>{formattedSunrise}</span>
             </div>
 
             <div>
-              <span>Захід </span>
+              <span>Sunset </span>
               <span>{formattedSunset}</span>
             </div>
           </div>
         </div>
         <div className={styles.wrapper}>
           <div className={styles.centerBlock}>
-            <span>Температура:</span>
-            <span>Відчувається як:</span>
-            <span>Тиск, мм:</span>
-            <span>Вологість, %:</span>
-            <span>Вітер, м/сек:</span>
+            <span>Temperature:</span>
+            <span>Feels like:</span>
+            <span>Pressure, mm:</span>
+            <span>Humidity, %:</span>
+            <span>Wind speed, m/sec:</span>
           </div>
           <div className={styles.rightBlock}>
             <span>

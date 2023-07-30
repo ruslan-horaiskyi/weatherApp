@@ -1,6 +1,5 @@
 import { createContext, useState } from 'react';
 
-import 'modern-normalize';
 import CardList from './components/CardList/CardList';
 
 import styles from './App.module.css';

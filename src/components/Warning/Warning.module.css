@@ -19,7 +19,6 @@
     color: white;
     font-size: 14px;
     display: inline-block;
-
     opacity: 0; 
     visibility: hidden;
     transition: visibility 0s 4s, opacity 4s linear;

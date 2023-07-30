@@ -1,11 +1,10 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 
 import { WeatherContext } from '../../App';
 
 const apiKey = '6de4f63f9a20496939e4772d2b1ae5ff';
 
 const useWeatherData = () => {
-  // const [weatherData, setWeatherData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const { setWeatherData } = useContext(WeatherContext);
 
@@ -26,8 +25,8 @@ const useWeatherData = () => {
         }
         throw new Error(
           response.status === 404
-            ? 'Місто не знайдено'
-            : 'Помилка отримання даних про погоду'
+            ? 'City not found'
+            : 'Error getting weather data'
         );
       })
       .then(({ list, city }) => {
@@ -50,28 +49,17 @@ const useWeatherData = () => {
           setErrorMessage(null);
         } else {
           setWeatherData([]);
-          setErrorMessage('Немає даних про погоду');
+          setErrorMessage('No weather data available');
         }
       })
       .catch((error) => {
         console.log('Error:', error.message);
         setWeatherData([]);
         setErrorMessage(
-          'Такого міста немає в базі, перевірте введені дані та спробуйте ще раз...'
+          'There is no such city in the database, please check your input and try again...'
         );
       });
   };
-
-  // TODO: Винести цю логіку в кстомний хук Ворнінга
-
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     setErrorMessage('');
-  //   }, 4000);
-  //   return () => {
-  //     clearTimeout(timeout);
-  //   };
-  // }, [errorMessage]);
 
   return { errorMessage, fetchData };
 };

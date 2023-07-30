@@ -1,15 +1,16 @@
 import { useContext, useState } from 'react';
+
 import Card from './Card/Card';
 import MoreInfo from '../MoreInfo/MoreInfo';
-import styles from './CardList.module.css';
 import SearchForm from '../SearchForm/SearchForm';
+import { WeatherContext } from '../../App'
+
 import useWeatherData from './useWeatherData';
 import Warning from '../Warning/Warning';
 
-import { WeatherContext } from '../../App'
+import styles from './CardList.module.css';
 
 const CardList = () => {
-  console.log('cardList');
   const [focusedCard, setFocusedCard] = useState(null);
   const { errorMessage, fetchData } = useWeatherData();
 
