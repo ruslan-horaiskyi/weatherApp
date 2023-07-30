@@ -7,12 +7,12 @@
   width: var(--width-full);
   max-width: 500px;
   opacity: 0.7;
-  background: rgba(0, 0, 0, 0.44);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: var(--color-background);
+  box-shadow: var(--box-shadow);
   backdrop-filter: blur(7.4px);
   -webkit-backdrop-filter: blur(7.4px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #fff;
+  border: var(--border);
+  color: var(--color-primary);
 }
 
 .moreInfo {
@@ -34,8 +34,8 @@
 }
 
 .infoDaylight {
-  border-bottom: 0.5px solid rgba(80, 79, 79, 0.45);
-  border-top: 0.5px solid rgba(80, 79, 79, 0.45);
+  border-bottom: var(--border-secondary);
+  border-top: var(--border-secondary);
   display: flex;
   justify-content: space-around;
   gap: var(--spacing-medium);
@@ -73,7 +73,7 @@
 
 .centerBlock span,
 .rightBlock span {
-  border-bottom: 1px solid rgba(97, 97, 97, 0.3);
+  border-bottom: var(--border-secondary);
   width: 100%;
 }
 

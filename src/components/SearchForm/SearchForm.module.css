@@ -11,10 +11,10 @@
 }
 
 .searchInput {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.44);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-primary);
+  background: var(--color-background);
+  box-shadow: var(--box-shadow);
+  border: var(--border);
   display: flex;
   flex: 1;
   padding: var(--spacing-medium);
@@ -22,13 +22,13 @@
   border-top-left-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
   outline: none;
-  
   background-position: right;
+  transition: all .5s var(--transition-ease);
 }
 
 .loadingInput {
   transition: all 1s var(--transition-ease);
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.44) 50%, var(--color-primary) 50%) left;
+  background: linear-gradient(to right, var(--color-background) 50%, var(--color-primary) 50%) left;
   background-size: 200% 100%;
 }
 
@@ -41,15 +41,15 @@
 
 .searchForm button {
   color: #fff;
-  background: rgba(0, 0, 0, 0.44);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--color-background);
+  border: var(--border);
   cursor: pointer;
   font-size: 1rem;
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   outline: none;
   transition: all var(--transition-duration) var(--transition-ease);
-  border-left: 1px solid rgb(192, 192, 192);
+  border-left: 1px solid var(--color-primary);
   padding: var(--spacing-medium);
 }
 
@@ -61,19 +61,19 @@
 
 @keyframes shake {
   0% {
-    border: solid 1px red;
+    border: solid 1px var(--color-error);
     transform: translateX(0);
   }
   20% {
-    border: solid 1px red;
+    border: solid 1px var(--color-error);
     transform: translateX(-5px);
   }
   40% {
-    border: solid 1px red;
+    border: solid 1px var(--color-error);
     transform: translateX(0);
   }
   60% {
-    border: solid 1px red;
+    border: solid 1px var(--color-error);
     transform: translateX(-5px);
   }
   100% {

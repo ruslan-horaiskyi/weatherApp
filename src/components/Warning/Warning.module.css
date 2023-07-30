@@ -1,26 +1,17 @@
 .showErrorTooltip::after {
     content: attr(data-tooltip);
     text-align: justify;
-    padding: var(--spacing-small);
-    border-radius: var(--spacing-small);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius);
     background-color: var(--color-error);
-    color: white;
+    color: var(--color-primary);
     font-size: 14px;
-    transition: visibility 0s 4s, opacity 4s linear;
     display: inline-block;
     margin-top: 10px;
   }
   
   .errorTooltip::after {
-    content: attr(data-tooltip);
-    text-align: justify;
-    padding: var(--spacing-small);
-    border-radius: var(--spacing-small);
-    background-color: var(--color-error);
-    color: white;
-    font-size: 14px;
-    display: inline-block;
     opacity: 0; 
-    visibility: hidden;
+    visibility: hidden; 
     transition: visibility 0s 4s, opacity 4s linear;
   }
