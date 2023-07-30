@@ -1,10 +1,9 @@
 .container {
   width: 100vw;
   max-width: 780px;
-  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem 1rem 0.5rem;
+  padding: 4rem 1rem 0 1rem;
 }

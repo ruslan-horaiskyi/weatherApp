@@ -45,7 +45,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   background: #221f2f;
-  overflow: scroll;
+  overflow: auto;
 }
 
 body::before {
