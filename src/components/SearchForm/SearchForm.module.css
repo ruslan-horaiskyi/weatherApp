@@ -10,7 +10,7 @@
   padding-left: 7px;
 }
 
-.searchForm input {
+.searchInput {
   color: #fff;
   background: rgba(0, 0, 0, 0.44);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,14 @@
   border-top-left-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
   outline: none;
-  transition: all var(--transition-duration) var(--transition-ease);
+  
+  background-position: right;
+}
+
+.loadingInput {
+  transition: all 1s var(--transition-ease);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.44) 50%, var(--color-primary) 50%) left;
+  background-size: 200% 100%;
 }
 
 .searchForm input:focus,

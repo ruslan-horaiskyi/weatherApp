@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { WeatherContext } from '../WeatherProvider/WeatherProvider';
+import classNames from 'classnames';
 import Warning from '../Warning/Warning';
 import useWeatherData from '../useWeatherData/useWeatherData'
 
@@ -48,17 +49,14 @@ const SearchForm = () => {
           value={cityName}
           onChange={handleInputChange}
           placeholder='Enter the name of the settlement'
+          className={classNames(styles.searchInput, { [styles.loadingInput]: isLoading })}
         />
         <button type='submit'>Search</button>
       </form>
 
       {errorMessage && !isLoading && <Warning errorMessage={errorMessage} />}
 
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <CardList />
-      )}
+      {!isLoading && <CardList />}
 
     </>
   );
