@@ -33,7 +33,7 @@ const MoreInfo = ({ data = null, handleClose }) => {
     wind = {},
     currentDay,
     city: { sunset = null, sunrise = null } = {},
-  } = data ?? {};
+  } = data;
 
   const formattedSunrise = formatTime(sunrise);
   const formattedSunset = formatTime(sunset);

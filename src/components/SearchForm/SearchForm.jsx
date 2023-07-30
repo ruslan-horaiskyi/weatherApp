@@ -11,7 +11,7 @@ const SearchForm = () => {
   const inputRef = useRef(null);
   const [cityName, setCityName] = useState('');
   const [hasWarning, setHasWarning] = useState(false);
-  const { fetchData } = useWeatherData();
+  const { fetchData, isLoading } = useWeatherData();
 
   const { errorMessage } = useContext(WeatherContext);
 
@@ -22,7 +22,10 @@ const SearchForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    return cityName.trim() === '' ? setHasWarning(true) : fetchData(cityName.trim());
+    const trimmedCityName = cityName.trim();
+    setCityName(trimmedCityName);
+
+    return trimmedCityName === '' ? setHasWarning(true) : fetchData(trimmedCityName);
   };
 
   useEffect(() => {
@@ -49,9 +52,14 @@ const SearchForm = () => {
         <button type='submit'>Search</button>
       </form>
 
-      {errorMessage && <Warning errorMessage={errorMessage} />}
+      {errorMessage && !isLoading && <Warning errorMessage={errorMessage} />}
 
-      <CardList />
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <CardList />
+      )}
+
     </>
   );
 };
