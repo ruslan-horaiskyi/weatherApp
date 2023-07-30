@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreactbasic=self.webpackChunkreactbasic||[]).push([[12],{12:function(e,s,c){e.exports=c.p+"static/media/Thunderstorm.4c1ef48be24483767f01.svg"}}]);

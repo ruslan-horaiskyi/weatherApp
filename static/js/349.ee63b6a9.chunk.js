@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreactbasic=self.webpackChunkreactbasic||[]).push([[349],{349:function(c,s,e){c.exports=e.p+"static/media/brokenClouds.6832d535cc5b4a706234.svg"}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreactbasic=self.webpackChunkreactbasic||[]).push([[893],{893:function(a,s,c){a.exports=c.p+"static/media/Mist.30e457a50cfdad0da7b1.svg"}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreactbasic=self.webpackChunkreactbasic||[]).push([[107],{107:function(a,e,c){a.exports=c.p+"static/media/background.97373fabe018ebaff4f3.jpg"}}]);
