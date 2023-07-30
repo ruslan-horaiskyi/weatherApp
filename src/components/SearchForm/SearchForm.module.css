@@ -54,19 +54,19 @@
 
 @keyframes shake {
   0% {
-    border-bottom: solid 1px red;
+    border: solid 1px red;
     transform: translateX(0);
   }
   20% {
-    border-bottom: solid 1px red;
+    border: solid 1px red;
     transform: translateX(-5px);
   }
   40% {
-    border-bottom: solid 1px red;
+    border: solid 1px red;
     transform: translateX(0);
   }
   60% {
-    border-bottom: solid 1px red;
+    border: solid 1px red;
     transform: translateX(-5px);
   }
   100% {
