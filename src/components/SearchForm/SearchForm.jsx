@@ -1,12 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { WeatherContext } from '../WeatherProvider/WeatherProvider';
+import Warning from '../Warning/Warning';
+import useWeatherData from '../useWeatherData/useWeatherData'
 
 import styles from './SearchForm.module.css';
 
-const SearchForm = ({ onSubmit }) => {
+const SearchForm = () => {
   const inputRef = useRef(null);
   const [cityName, setCityName] = useState('');
   const [hasWarning, setHasWarning] = useState(false);
+  const { fetchData } = useWeatherData();
+
+  const { errorMessage } = useContext(WeatherContext);
 
   const handleInputChange = (e) => {
     setCityName(e.target.value);
@@ -15,9 +20,7 @@ const SearchForm = ({ onSubmit }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    return cityName.trim() === ''
-      ? setHasWarning(true)
-      : onSubmit(cityName.trim());
+    return cityName.trim() === '' ? setHasWarning(true) : fetchData(cityName.trim());
   };
 
   useEffect(() => {
@@ -32,21 +35,20 @@ const SearchForm = ({ onSubmit }) => {
   }, [hasWarning]);
 
   return (
-    <form onSubmit={handleFormSubmit} className={styles.searchForm}>
-      <input
-        ref={inputRef}
-        type='text'
-        value={cityName}
-        onChange={handleInputChange}
-        placeholder='Enter the name of the settlement'
-      />
-      <button type='submit'>Search</button>
-    </form>
+    <>
+      <form onSubmit={handleFormSubmit} className={styles.searchForm}>
+        <input
+          ref={inputRef}
+          type='text'
+          value={cityName}
+          onChange={handleInputChange}
+          placeholder='Enter the name of the settlement'
+        />
+        <button type='submit'>Search</button>
+      </form>
+      {errorMessage && <Warning errorMessage={errorMessage} />}
+    </>
   );
-};
-
-SearchForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchForm;

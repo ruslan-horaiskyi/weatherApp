@@ -8,7 +8,6 @@
 
 .searchForm:focus {
   padding-left: 7px;
-  transition: all var(--transition-duration) var(--transition-ease);
 }
 
 .searchForm input {

@@ -4,15 +4,10 @@ import MoreInfo from '../MoreInfo/MoreInfo';
 import SearchForm from '../SearchForm/SearchForm';
 import { WeatherContext } from '../WeatherProvider/WeatherProvider';
 
-import useWeatherData from './useWeatherData';
-import Warning from '../Warning/Warning';
-
 import styles from './CardList.module.css';
 
 const CardList = () => {
   const [focusedCard, setFocusedCard] = useState(null);
-  const { errorMessage, fetchData } = useWeatherData();
-
   const { weatherData } = useContext(WeatherContext);
 
   const handleCardFocus = (date) => {
@@ -25,9 +20,7 @@ const CardList = () => {
 
   return (
     <div className={styles.cardListContainer}>
-      <SearchForm onSubmit={fetchData} />
-
-      {errorMessage && <Warning errorMessage={errorMessage} />}
+      <SearchForm />
 
       <div className={styles.cardList}>
         {weatherData.map((dayData) => (

@@ -1,13 +1,11 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 
 import { WeatherContext } from '../WeatherProvider/WeatherProvider';
 
 const apiKey = '6de4f63f9a20496939e4772d2b1ae5ff';
 
 const useWeatherData = () => {
-  const [errorMessage, setErrorMessage] = useState('');
-  const { setWeatherData } = useContext(WeatherContext);
-
+  const { setWeatherData, errorMessage, setErrorMessage } = useContext(WeatherContext);
 
   const fetchData = (cityName) => {
     if (!cityName) {
@@ -30,7 +28,7 @@ const useWeatherData = () => {
         );
       })
       .then(({ list, city }) => {
-        if (list && list.length > 0) {
+        if (list?.length) {
           const filteredData = list.reduce((acc, val) => {
             const currentDay = val.dt_txt.split(' ')[0];
 
