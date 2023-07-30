@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 
-import { WeatherContext } from '../../App';
+import { WeatherContext } from '../WeatherProvider/WeatherProvider';
 
 const apiKey = '6de4f63f9a20496939e4772d2b1ae5ff';
 

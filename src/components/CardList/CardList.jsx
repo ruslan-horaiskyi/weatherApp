@@ -1,9 +1,8 @@
 import { useContext, useState } from 'react';
-
 import Card from './Card/Card';
 import MoreInfo from '../MoreInfo/MoreInfo';
 import SearchForm from '../SearchForm/SearchForm';
-import { WeatherContext } from '../../App'
+import { WeatherContext } from '../WeatherProvider/WeatherProvider';
 
 import useWeatherData from './useWeatherData';
 import Warning from '../Warning/Warning';
