@@ -40,7 +40,7 @@ const useWeatherData = () => {
             acc[currentDay] = {
               ...val,
               currentDay,
-              city: { sunset: city.sunset, sunrise: city.sunrise },
+              city: { sunset: city.sunset, sunrise: city.sunrise, cityName: city.name },
             };
             return acc;
           }, {});

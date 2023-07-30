@@ -8,6 +8,7 @@
     font-size: 14px;
     transition: visibility 0s 4s, opacity 4s linear;
     display: inline-block;
+    margin-top: 10px;
   }
   
   .errorTooltip::after {

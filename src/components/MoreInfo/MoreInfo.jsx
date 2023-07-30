@@ -32,7 +32,7 @@ const MoreInfo = ({ data = null, handleClose }) => {
     main = {},
     wind = {},
     currentDay,
-    city: { sunset = null, sunrise = null } = {},
+    city: { sunset = null, sunrise = null, cityName = '' } = {},
   } = data;
 
   const formattedSunrise = formatTime(sunrise);
@@ -42,8 +42,8 @@ const MoreInfo = ({ data = null, handleClose }) => {
     <div className={styles.container} ref={moreInfoRef}>
       <div className={styles.header}>
         <div className={styles.title}>
-          <span>Weather for: </span>
-          <span>{currentDay}</span>
+          <span>Weather for <span className={styles.cityName}>{cityName}</span></span>
+          <span> on {currentDay}</span>
         </div>
 
         <button

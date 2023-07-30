@@ -95,11 +95,21 @@
   align-items: center;
 }
 
+.cityName {
+  font-weight: 700;
+  border-bottom: 1px dotted;
+}
+
 @media screen and (max-width: 375px) {
   .moreInfo {
     flex-direction: column;
   }
   .wrapper {
     justify-content: space-around;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
   }
 }
