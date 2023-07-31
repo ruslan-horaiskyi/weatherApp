@@ -1,18 +1,18 @@
 .container {
+  color: var(--color-primary);
+  background: var(--color-background);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-medium);
-  border-radius: var(--border-radius);
-  padding: var(--spacing-medium);
   width: var(--width-full);
   max-width: 500px;
-  opacity: 0.7;
-  background: var(--color-background);
+  padding: var(--spacing-medium);
+  gap: var(--spacing-medium);
+  border: var(--border);
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  opacity: 0.7;
   backdrop-filter: blur(7.4px);
   -webkit-backdrop-filter: blur(7.4px);
-  border: var(--border);
-  color: var(--color-primary);
 }
 
 .moreInfo {
@@ -34,23 +34,23 @@
 }
 
 .infoDaylight {
-  border-bottom: var(--border-secondary);
-  border-top: var(--border-secondary);
+  color: rgba(255, 255, 255, 0.7);
   display: flex;
   justify-content: space-around;
-  gap: var(--spacing-medium);
-  color: rgba(255, 255, 255, 0.7);
   margin-top: var(--spacing-large);
+  border-bottom: var(--border-secondary);
+  border-top: var(--border-secondary);
+  gap: var(--spacing-medium);
 }
 
 .closeButton {
-  border-radius: var(--border-radius);
-  height: 32px;
-  width: 32px;
-  cursor: pointer;
-  border: none;
   background: transparent;
   color: var(--color-primary);
+  height: 32px;
+  width: 32px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
   transition: all var(--transition-duration) var(--transition-ease);
 }
 
@@ -73,8 +73,8 @@
 
 .centerBlock span,
 .rightBlock span {
-  border-bottom: var(--border-secondary);
   width: 100%;
+  border-bottom: var(--border-secondary);
 }
 
 .rightBlock {

@@ -1,13 +1,13 @@
 .cardList {
   display: flex;
   justify-content: space-between;
+  max-width: fit-content;
   gap: var(--spacing-small);
-  transition: all var(--transition-duration) var(--transition-ease);
+  padding: var(--spacing-small);
   scroll-behavior: smooth;
   overflow: scroll auto;
-  padding: var(--spacing-medium);
   width: 100%;
-  max-width: fit-content;
+  transition: all var(--transition-duration) var(--transition-ease);
 }
 
 .cardListContainer {
@@ -17,4 +17,10 @@
   flex-direction: column;
   width: 100%;
   gap: var(--spacing-medium);
+}
+
+@media screen and (max-width: 375px) {
+  .cardList {
+    padding: var(--spacing-large) var(--spacing-small);
+  }
 }

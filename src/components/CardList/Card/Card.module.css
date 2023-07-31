@@ -1,25 +1,24 @@
 .card {
-  border-radius: var(--border-radius);
-  height: fit-content;
+  background: var(--color-background);
+  color: var(--color-primary);
+  min-width: 110px;
   text-align: center;
   font-size: var(--font-size-small);
   cursor: pointer;
   padding: var(--spacing-medium);
-  transition: all var(--transition-duration) var(--transition-ease);
-  min-width: 110px;
+  box-shadow: var(--box-shadow);
+  border: var(--border);
+  border-radius: var(--border-radius);
   opacity: 0.7;
   backdrop-filter: blur(7.4px);
   -webkit-backdrop-filter: blur(7.4px);
-  background: var(--color-background);
-  box-shadow: var(--box-shadow);
-  border: var(--border);
-  color: var(--color-primary);
+  transition: all var(--transition-duration) var(--transition-ease);
 }
 
 .card:hover,
 .focused {
-  transform: translate(0, -5px);
   box-shadow: var(--box-shadow-focused);
+  transform: translate(0, -5px);
 }
 
 .cardImage {
@@ -37,10 +36,9 @@
 .day {
   margin-top: var(--spacing-small);
   font-size: var(--font-size-large);
-  line-height: var(--font-size-large);
   font-family: 'arial,helvetica,sans-serif';
+  line-height: var(--font-size-large);
 }
-
 
 .weekday,
 .month {

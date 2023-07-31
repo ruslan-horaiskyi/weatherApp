@@ -15,7 +15,6 @@ code {
   --color-background: rgba(0, 0, 0, 0.44);
   --color-error: rgb(241, 75, 75);
 
-  --shadow-color: 0deg 0% 0%;
   --box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
   --box-shadow-focused: 0 1px 10px rgba(202, 181, 204, 0.1);
@@ -77,32 +76,32 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0;
+  background: var(--color-body-background);
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  margin: 0;
   min-height: 100vh;
-  background: var(--color-body-background);
   overflow: auto;
 }
 
 body::before {
+  background-color: var(--color-body-before);
   content: '';
   position: absolute;
   width: 120px;
   height: 120px;
-  background-color: var(--color-body-before);
   left: 15%;
   top: 20%;
   filter: blur(150px);
 }
 
 body::after {
+  background-color: var(--color-body-after);
   content: '';
   position: absolute;
   width: 120px;
   height: 120px;
-  background-color: var(--color-body-after);
   left: 80%;
   top: 74%;
   filter: blur(150px);
@@ -124,7 +123,7 @@ input::-webkit-inner-spin-button {
 
 ::-webkit-scrollbar-thumb {
   background-color: rgb(198, 220, 228);
-  border-radius: 20px;
   border: 6px solid transparent;
+  border-radius: 20px;
   background-clip: content-box;
 }

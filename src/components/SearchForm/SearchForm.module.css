@@ -1,8 +1,8 @@
 .searchForm {
-  margin: 5px 0;
-  border-radius: var(--border-radius);
   display: flex;
   width: 100%;
+  margin: 5px 0;
+  border-radius: var(--border-radius);
   opacity: 0.7;
 }
 
@@ -13,50 +13,50 @@
 .searchInput {
   color: var(--color-primary);
   background: var(--color-background);
-  box-shadow: var(--box-shadow);
-  border: var(--border);
   display: flex;
   flex: 1;
-  padding: var(--spacing-medium);
-  font-size: 1rem;
+  background-position: right;
+  border: var(--border);
   border-top-left-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-medium);
+  font-size: 1rem;
   outline: none;
-  background-position: right;
   transition: all .5s var(--transition-ease);
 }
 
 .loadingInput {
-  transition: all 1s var(--transition-ease);
   background: linear-gradient(to right, var(--color-background) 50%, var(--color-primary) 50%) left;
   background-size: 200% 100%;
+  transition: all 1s var(--transition-ease);
 }
 
 .searchForm input:focus,
 .searchForm input:hover {
-  padding-left: var(--spacing-large);
-  background-color: var(--color-primary);
   color: #000;
+  background-color: var(--color-primary);
+  padding-left: var(--spacing-large);
 }
 
 .searchForm button {
-  color: #fff;
+  color: var(--color-primary);
   background: var(--color-background);
+  padding: var(--spacing-medium);
   border: var(--border);
-  cursor: pointer;
-  font-size: 1rem;
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
-  outline: none;
-  transition: all var(--transition-duration) var(--transition-ease);
   border-left: 1px solid var(--color-primary);
-  padding: var(--spacing-medium);
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all var(--transition-duration) var(--transition-ease);
 }
 
 .searchForm button:hover {
-  padding: 0 20px;
-  background-color: var(--color-primary);
   color: #000;
+  background-color: var(--color-primary);
+  padding: 0 20px;
 }
 
 @keyframes shake {
