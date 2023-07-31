@@ -59,6 +59,10 @@
   padding: 0 20px;
 }
 
+.searchForm button:disabled {
+  cursor: no-drop;
+}
+
 @keyframes shake {
   0% {
     border: solid 1px var(--color-error);

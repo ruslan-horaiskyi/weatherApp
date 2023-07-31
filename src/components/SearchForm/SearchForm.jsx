@@ -50,8 +50,9 @@ const SearchForm = () => {
           onChange={handleInputChange}
           placeholder='Enter the name of the settlement'
           className={classNames(styles.searchInput, { [styles.loadingInput]: isLoading })}
+          disabled={isLoading}
         />
-        <button type='submit'>Search</button>
+        <button type='submit' disabled={isLoading}>Search</button>
       </form>
 
       {errorMessage && !isLoading && <Warning errorMessage={errorMessage} />}

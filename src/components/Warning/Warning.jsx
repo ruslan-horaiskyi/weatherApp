@@ -1,28 +1,36 @@
-import { useEffect, useState } from 'react';
-import classNames from 'classnames';
+import { useEffect } from 'react';
 
-import styles from './Warning.module.css';
+import "toastify-js/src/toastify.css"
+import Toastify from 'toastify-js'
 
 const Warning = ({ errorMessage }) => {
-    const [tooltipVisible, setTooltipVisible] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
+    console.log('warning use effect');
+    Toastify({
+      text: errorMessage,
+      selector: 'warning',
+      style: {
+        maxWidth: '100%',
+        position: 'unset',
+        color: 'var(--color-primary)',
+        background: 'var(--color-error)',
+        marginTop: '10px',
+        borderRadius: '16px',
+      },
+    }).showToast();
 
-        setTooltipVisible(true);
-        const timeout = setTimeout(() => {
-            setTooltipVisible(false);
-        }, 2500);
+  }, []);
 
-        return () => { clearTimeout(timeout); }
-
-    }, []);
-
-    return (
-        <div
-            className={classNames(styles.showErrorTooltip, { [styles.errorTooltip]: !tooltipVisible })}
-            data-tooltip={errorMessage}
-        />
-    );
+  return <div id='warning' style={
+    {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+      marginTop: 'var(--spacing-medium)',
+    }
+  }></div>;
 };
 
 export default Warning;
