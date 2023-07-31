@@ -6,7 +6,6 @@ import Toastify from 'toastify-js'
 const Warning = ({ errorMessage }) => {
 
   useEffect(() => {
-    console.log('warning use effect');
     Toastify({
       text: errorMessage,
       selector: 'warning',
@@ -15,7 +14,7 @@ const Warning = ({ errorMessage }) => {
         position: 'unset',
         color: 'var(--color-primary)',
         background: 'var(--color-error)',
-        marginTop: '10px',
+        marginTop: 'var(--spacing-medium)',
         borderRadius: '16px',
       },
     }).showToast();

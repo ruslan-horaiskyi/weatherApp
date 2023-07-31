@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
-import Card from './Card/Card';
+import Card from './Card';
 import MoreInfo from '../MoreInfo/MoreInfo';
-import { WeatherContext } from '../WeatherProvider/WeatherProvider';
+import { WeatherContext } from '../../WeatherProvider/WeatherProvider';
 
 import styles from './CardList.module.css';
 

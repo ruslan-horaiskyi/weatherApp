@@ -4,8 +4,10 @@ import { WeatherContext } from '../WeatherProvider/WeatherProvider';
 const apiKey = '6de4f63f9a20496939e4772d2b1ae5ff';
 
 const useWeatherData = () => {
-  const { setWeatherData, errorMessage, setErrorMessage } = useContext(WeatherContext);
+  const { setWeatherData, setErrorMessage } = useContext(WeatherContext);
   const [isLoading, setIsLoading] = useState(false);
+  
+console.log();
 
   const fetchData = (cityName) => {
     if (!cityName) {
@@ -46,6 +48,7 @@ const useWeatherData = () => {
           }, {});
           setWeatherData(Object.values(filteredData));
           setErrorMessage(null);
+          setIsLoading(false);
         } else {
           setWeatherData([]);
           setErrorMessage('No weather data available');
@@ -58,14 +61,13 @@ const useWeatherData = () => {
           'There is no such city in the database, please check your input and try again...'
         );
       })
+
       .finally(() => {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
+        setIsLoading(false);
       });
   };
 
-  return { errorMessage, fetchData, isLoading };
+  return { fetchData, isLoading };
 };
 
 export default useWeatherData;

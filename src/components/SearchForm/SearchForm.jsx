@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef, useContext } from 'react';
-import { WeatherContext } from '../WeatherProvider/WeatherProvider';
+import { WeatherContext } from '../../WeatherProvider/WeatherProvider';
 import classNames from 'classnames';
 import Warning from '../Warning/Warning';
-import useWeatherData from '../useWeatherData/useWeatherData'
-
-import CardList from '../CardList/CardList';
+import useWeatherData from '../../hooks/useWeatherData';
+import CardList from '../CardList';
 
 import styles from './SearchForm.module.css';
 
@@ -14,7 +13,7 @@ const SearchForm = () => {
   const [hasWarning, setHasWarning] = useState(false);
   const { fetchData, isLoading } = useWeatherData();
 
-  const { errorMessage } = useContext(WeatherContext);
+  const { errorMessage, weatherData } = useContext(WeatherContext);
 
   const handleInputChange = (e) => {
     setCityName(e.target.value);
@@ -57,7 +56,7 @@ const SearchForm = () => {
 
       {errorMessage && !isLoading && <Warning errorMessage={errorMessage} />}
 
-      {!isLoading && <CardList />}
+      {!!weatherData?.length && !isLoading && <CardList />}
 
     </>
   );

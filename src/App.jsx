@@ -1,5 +1,5 @@
 import SearchForm from './components/SearchForm/SearchForm';
-import WeatherProvider from './components/WeatherProvider/WeatherProvider';
+import WeatherProvider from './WeatherProvider';
 
 import styles from './App.module.css';
 
