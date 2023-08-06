@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { WeatherContext } from '../../WeatherProvider/WeatherProvider';
 import classNames from 'classnames';
+
 import Warning from '../Warning/Warning';
 import useWeatherData from '../../hooks/useWeatherData';
 import CardList from '../CardList';
@@ -23,10 +24,36 @@ const SearchForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const trimmed = cityName.trim();
-    setCityName(trimmed);
+    const trimmedCityName = cityName.trim();
+    setCityName(trimmedCityName);
 
-    trimmed === '' ? setHasWarning(true) : fetchData(trimmed);
+    trimmedCityName === '' ? setHasWarning(true) : fetchData(trimmedCityName);
+  };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+
+        try {
+          const response = await fetch(
+            `https://api.bigdatacloud.net/data/reverse-geocode-client?${latitude}&${longitude}&localityLanguage=uk`
+          );
+          const data = await response.json();
+
+          if (data) {
+            setCityName(data.city);
+          }
+        } catch (error) {
+          console.error('Error getting city name:', error);
+        }
+      },
+      (error) => {
+        console.error('Error getting geolocation:', error);
+      }
+    );
+  } else {
+    console.error('Geolocation is not supported by this browser.');
   };
 
   useEffect(() => {
