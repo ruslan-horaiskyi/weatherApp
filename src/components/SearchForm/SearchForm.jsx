@@ -9,10 +9,10 @@ import CardList from '../CardList';
 import styles from './SearchForm.module.css';
 
 const SearchForm = () => {
-  console.log('SearchForm');
   const inputRef = useRef(null);
   const [cityName, setCityName] = useState('');
   const [hasWarning, setHasWarning] = useState(false);
+  const [userCity, setUserCity] = useState(false);
   const { fetchData, isLoading } = useWeatherData();
 
   const { errorMessage, weatherData } = useContext(WeatherContext);
@@ -30,31 +30,47 @@ const SearchForm = () => {
     trimmedCityName === '' ? setHasWarning(true) : fetchData(trimmedCityName);
   };
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const { latitude, longitude } = position.coords;
+  const getUserGeolocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
 
-        try {
-          const response = await fetch(
-            `https://api.bigdatacloud.net/data/reverse-geocode-client?${latitude}&${longitude}&localityLanguage=uk`
-          );
-          const data = await response.json();
+          try {
+            const response = await fetch(
+              `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=uk`
+            );
+            const data = await response.json();
 
-          if (data) {
-            setCityName(data.city);
+            if (data) {
+              localStorage.setItem('city', data.city);
+              setUserCity(true);
+            }
+          } catch (error) {
+            console.error('Error getting city name:', error);
           }
-        } catch (error) {
-          console.error('Error getting city name:', error);
+        },
+        (error) => {
+          console.error('Error getting geolocation:', error);
         }
-      },
-      (error) => {
-        console.error('Error getting geolocation:', error);
-      }
-    );
-  } else {
-    console.error('Geolocation is not supported by this browser.');
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
   };
+
+  useEffect(() => {
+    getUserGeolocation();
+  }, []);
+
+  useEffect(() => {
+    const storedCity = localStorage.getItem('city');
+
+    if (storedCity) {
+      setCityName(storedCity);
+      fetchData(storedCity);
+    }
+  }, [userCity]);
 
   useEffect(() => {
     if (hasWarning) {
