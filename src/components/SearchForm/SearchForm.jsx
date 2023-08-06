@@ -8,6 +8,7 @@ import CardList from '../CardList';
 import styles from './SearchForm.module.css';
 
 const SearchForm = () => {
+  console.log('SearchForm');
   const inputRef = useRef(null);
   const [cityName, setCityName] = useState('');
   const [hasWarning, setHasWarning] = useState(false);
@@ -22,10 +23,10 @@ const SearchForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const trimmedCityName = cityName.trim();
-    setCityName(trimmedCityName);
+    const trimmed = cityName.trim();
+    setCityName(trimmed);
 
-    return trimmedCityName === '' ? setHasWarning(true) : fetchData(trimmedCityName);
+    trimmed === '' ? setHasWarning(true) : fetchData(trimmed);
   };
 
   useEffect(() => {

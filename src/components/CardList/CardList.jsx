@@ -6,6 +6,7 @@ import { WeatherContext } from '../../WeatherProvider/WeatherProvider';
 import styles from './CardList.module.css';
 
 const CardList = () => {
+  console.log('CardList');
   const [focusedCard, setFocusedCard] = useState(null);
   const { weatherData } = useContext(WeatherContext);
 

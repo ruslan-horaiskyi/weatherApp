@@ -8,6 +8,7 @@ import CustomIcon from '../../CustomIcon/CustomIcon';
 import styles from './Card.module.css';
 
 const Card = memo(({ data, isActive, handleClick }) => {
+  console.log('Card');
   const { currentDay = '', weather = [], main = {} } = data || {};
 
   const clickHandler = useCallback(

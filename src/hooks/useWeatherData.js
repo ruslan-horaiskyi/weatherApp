@@ -4,12 +4,12 @@ import { WeatherContext } from '../WeatherProvider/WeatherProvider';
 const apiKey = '6de4f63f9a20496939e4772d2b1ae5ff';
 
 const useWeatherData = () => {
+  console.log('useWeatherData');
   const { setWeatherData, setErrorMessage } = useContext(WeatherContext);
   const [isLoading, setIsLoading] = useState(false);
-  
-console.log();
 
   const fetchData = (cityName) => {
+    console.log('fetch');
     if (!cityName) {
       return;
     }

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef, memo } from 'react';
+import { useEffect, useRef, memo, useMemo } from 'react';
 
 import { formatTime, roundValue } from '../../utils/utils';
 
@@ -7,6 +7,7 @@ import CustomIcon from '../CustomIcon/CustomIcon';
 import styles from './MoreInfo.module.css';
 
 const MoreInfo = ({ data = null, handleClose }) => {
+  console.log('MoreInfo');
   const moreInfoRef = useRef(null);
 
   useEffect(() => {
@@ -35,8 +36,8 @@ const MoreInfo = ({ data = null, handleClose }) => {
     city: { sunset = null, sunrise = null, cityName = '' } = {},
   } = data;
 
-  const formattedSunrise = formatTime(sunrise);
-  const formattedSunset = formatTime(sunset);
+  const formattedSunrise = useMemo(() => formatTime(sunrise), [sunrise]);
+  const formattedSunset = useMemo(() => formatTime(sunset), [sunset]);
 
   return (
     <div className={styles.container} ref={moreInfoRef}>

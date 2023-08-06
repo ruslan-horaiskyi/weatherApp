@@ -3,6 +3,7 @@ import { createContext, useState } from 'react';
 export const WeatherContext = createContext();
 
 const WeatherProvider = ({ children }) => {
+  console.log('WeatherProvider');
   const [weatherData, setWeatherData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 

@@ -1,25 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import "toastify-js/src/toastify.css"
 import Toastify from 'toastify-js'
 
 const Warning = ({ errorMessage }) => {
+  console.log('Warning');
+  const [isToastVisible, setIsToastVisible] = useState(true);
 
   useEffect(() => {
-    Toastify({
-      text: errorMessage,
-      selector: 'warning',
-      style: {
-        maxWidth: '100%',
-        position: 'unset',
-        color: 'var(--color-primary)',
-        background: 'var(--color-error)',
-        marginTop: 'var(--spacing-medium)',
-        borderRadius: '16px',
-      },
-    }).showToast();
+    if (!errorMessage) {
+      return null;
+    }
 
-  }, []);
+    if (errorMessage && isToastVisible) {
+      const toast = Toastify({
+        text: errorMessage,
+        selector: 'warning',
+        style: {
+          maxWidth: '100%',
+          position: 'unset',
+          color: 'var(--color-primary)',
+          background: 'var(--color-error)',
+          marginTop: 'var(--spacing-medium)',
+          borderRadius: '16px',
+        },
+      });
+
+      toast.showToast();
+
+      return () => {
+        setIsToastVisible(false);
+        toast.hideToast();
+      };
+    }
+  }, [errorMessage, isToastVisible]);
 
   return <div id='warning' style={
     {
